@@ -1,0 +1,20 @@
+[Tests]
+  [analytic_pk2_response]
+    type = CSVDiff
+    input = single_crystal_pk2.i
+    csvdiff = single_crystal_pk2_out.csv
+    cli_args = 'Outputs/active=csv'
+    requirement = 'The direct Total-Lagrangian FCC material shall reproduce the verified 20-step single-crystal plastic response and analytic-tangent check.'
+    abs_zero = 1e-9
+    rel_err = 2e-7
+  []
+  [analytic_pk2_jacobian]
+    type = PetscJacobianTester
+    input = single_crystal_pk2.i
+    cli_args = "steps=4 max_strain=0.002 Outputs/active=''"
+    run_sim = true
+    ratio_tol = 5e-5
+    difference_tol = 1e-4
+    requirement = 'The fully coupled FCC update shall provide a consistent Total-Lagrangian global Jacobian.'
+  []
+[]
