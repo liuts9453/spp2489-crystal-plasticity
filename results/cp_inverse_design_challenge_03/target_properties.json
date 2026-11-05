@@ -1,0 +1,69 @@
+{
+  "schema": "spp2489_cp_target_properties_v1",
+  "target_P11_at_F11_1p01_MPa": 371.67636052418,
+  "target_P11_at_F11_1p02_MPa": 399.34122890164,
+  "target_H_sec_MPa": 2766.486837746004,
+  "physical_loading_time_s": 1.0,
+  "mesh": 32,
+  "mpi_ranks": 8,
+  "time_protocol": {
+    "name": "adaptive_strict",
+    "mode": "adaptive",
+    "steps": 40,
+    "sync_times": [
+      0.5,
+      1.0
+    ],
+    "nl_max_its": 25
+  },
+  "material_parameters": {
+    "C_ijkl_MPa": [
+      200000.0,
+      120000.0,
+      120000.0,
+      200000.0,
+      120000.0,
+      200000.0,
+      100000.0,
+      100000.0,
+      100000.0
+    ],
+    "reference_slip_rate_per_s": 0.001,
+    "rate_sensitivity": 0.1,
+    "initial_slip_resistance_MPa": 80.0,
+    "hardening_modulus_MPa": 400.0,
+    "saturation_resistance_MPa": 160.0,
+    "hardening_exponent": 1.0,
+    "latent_hardening_ratio": 1.4
+  },
+  "convergence_tolerances": {
+    "nl_max_its": 25,
+    "nl_rel_tol": 1e-06,
+    "nl_abs_tol": 1e-10,
+    "linear_tolerance": 1e-08,
+    "local_absolute_tolerance": 1e-10,
+    "local_relative_tolerance": 1e-09,
+    "local_max_iterations": 60
+  },
+  "application_commit": "050f42e1a33692de63f15fd792b39ef8ef951feb",
+  "moose_commit": "11853d1623555a9e444ffb0725a4dc16f64fb255",
+  "converged": true,
+  "accepted_increments": 49,
+  "failed_attempts": 4,
+  "total_newton_iterations": 288,
+  "wall_time_s": 24.206775658996776,
+  "physical_checks": {
+    "reached_physical_end_time": true,
+    "exact_synchronized_targets": true,
+    "P22_constraint": true,
+    "macro_shear_constraints": true,
+    "plasticity_active": true,
+    "finite_state": true,
+    "positive_slip_resistance": true,
+    "plastic_volume_error": true,
+    "nonnegative_plastic_dissipation": true,
+    "hill_mandel": true,
+    "periodic_BCs": true,
+    "required_exodus_fields": true
+  }
+}

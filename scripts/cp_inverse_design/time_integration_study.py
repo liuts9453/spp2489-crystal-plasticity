@@ -75,7 +75,7 @@ def run_study(mesh: int = 32, reuse_cache: bool = True, mpi_ranks: int = 4) -> d
     }
     write_json(STUDY_PATH, summary)
     with STUDY_CSV.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(records[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(records[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(records)
     return summary

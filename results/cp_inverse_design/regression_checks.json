@@ -1,0 +1,42 @@
+{
+  "all_checks_passed": true,
+  "checks": {
+    "python_unit_tests_pass": true,
+    "original_testharness_pass": true,
+    "public_target_hides_reference_design": true,
+    "target_is_real_converged_fem": true,
+    "target_exact_times_and_physical_checks": true,
+    "all_candidate_fem_converged": true,
+    "independent_low_fidelity_physics": true,
+    "independent_reproduces_best_observation": true,
+    "dual_early_stopping_met": true,
+    "high_fidelity_is_same_mesh": true,
+    "high_fidelity_physics": true,
+    "cache_reuse_verified": true,
+    "eight_static_figures_exist": true,
+    "animation_exists": true,
+    "four_required_exodus_files_exist": true
+  },
+  "python_unit_tests": {
+    "returncode": 0,
+    "tests_run": 10,
+    "tail": [
+      "----------------------------------------------------------------------",
+      "Ran 10 tests in 0.256s",
+      "",
+      "OK"
+    ]
+  },
+  "moose_testharness": {
+    "returncode": 0,
+    "passed": 8,
+    "skipped": 0,
+    "failed": 0,
+    "tail": [
+      "",
+      "--------------------------------------------------------------------------------------------------------------",
+      "Ran 8 tests in 6.8 seconds. Average test time 0.9 seconds, maximum test time 1.1 seconds.",
+      "\u001b[1m\u001b[32m8 passed\u001b[0m, \u001b[1m0 skipped\u001b[0m, \u001b[1m0 failed\u001b[0m"
+    ]
+  }
+}

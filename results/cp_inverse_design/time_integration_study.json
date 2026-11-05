@@ -1,0 +1,141 @@
+{
+  "mesh": 32,
+  "physical_loading_time_s": 1.0,
+  "synchronized_times_s": [
+    0.5,
+    1.0
+  ],
+  "records": [
+    {
+      "eta": 0.0,
+      "protocol": "adaptive_current",
+      "P11_1pct_MPa": 364.35671911253,
+      "P11_2pct_MPa": 392.69330490708,
+      "wall_time_s": 31.285783252009423,
+      "accepted_increments": 36,
+      "failed_attempts": 6,
+      "total_newton_iterations": 286
+    },
+    {
+      "eta": 0.0,
+      "protocol": "adaptive_strict",
+      "P11_1pct_MPa": 364.45827496575,
+      "P11_2pct_MPa": 392.83227793429,
+      "wall_time_s": 38.56649426801596,
+      "accepted_increments": 53,
+      "failed_attempts": 6,
+      "total_newton_iterations": 348
+    },
+    {
+      "eta": 0.0,
+      "protocol": "fixed_200",
+      "P11_1pct_MPa": 364.55900515168,
+      "P11_2pct_MPa": 392.95584813207,
+      "wall_time_s": 94.5193530980032,
+      "accepted_increments": 203,
+      "failed_attempts": 3,
+      "total_newton_iterations": 843
+    },
+    {
+      "eta": 0.5,
+      "protocol": "adaptive_current",
+      "P11_1pct_MPa": 345.35346061878,
+      "P11_2pct_MPa": 370.47780432482,
+      "wall_time_s": 27.996774364990415,
+      "accepted_increments": 33,
+      "failed_attempts": 5,
+      "total_newton_iterations": 247
+    },
+    {
+      "eta": 0.5,
+      "protocol": "adaptive_strict",
+      "P11_1pct_MPa": 345.46627926799,
+      "P11_2pct_MPa": 370.61017324213,
+      "wall_time_s": 30.025805964978645,
+      "accepted_increments": 48,
+      "failed_attempts": 3,
+      "total_newton_iterations": 258
+    },
+    {
+      "eta": 0.5,
+      "protocol": "fixed_200",
+      "P11_1pct_MPa": 345.57032230253,
+      "P11_2pct_MPa": 370.72499579843,
+      "wall_time_s": 80.12029338499997,
+      "accepted_increments": 201,
+      "failed_attempts": 1,
+      "total_newton_iterations": 678
+    },
+    {
+      "eta": 1.0,
+      "protocol": "adaptive_current",
+      "P11_1pct_MPa": 436.03222052506,
+      "P11_2pct_MPa": 473.30432888136,
+      "wall_time_s": 10.21488213801058,
+      "accepted_increments": 22,
+      "failed_attempts": 0,
+      "total_newton_iterations": 65
+    },
+    {
+      "eta": 1.0,
+      "protocol": "adaptive_strict",
+      "P11_1pct_MPa": 436.26909674673,
+      "P11_2pct_MPa": 473.50297483398,
+      "wall_time_s": 17.79418659498333,
+      "accepted_increments": 42,
+      "failed_attempts": 0,
+      "total_newton_iterations": 123
+    },
+    {
+      "eta": 1.0,
+      "protocol": "fixed_200",
+      "P11_1pct_MPa": 436.47912364597,
+      "P11_2pct_MPa": 473.66600920479,
+      "wall_time_s": 80.63402499101358,
+      "accepted_increments": 201,
+      "failed_attempts": 1,
+      "total_newton_iterations": 673
+    }
+  ],
+  "comparisons": [
+    {
+      "eta": 0.0,
+      "protocol": "adaptive_current",
+      "relative_error_1pct_vs_fixed": 0.0005548787337343273,
+      "relative_error_2pct_vs_fixed": 0.0006681239794190775
+    },
+    {
+      "eta": 0.0,
+      "protocol": "adaptive_strict",
+      "relative_error_1pct_vs_fixed": 0.0002763069475903816,
+      "relative_error_2pct_vs_fixed": 0.00031446331278028595
+    },
+    {
+      "eta": 0.5,
+      "protocol": "adaptive_current",
+      "relative_error_1pct_vs_fixed": 0.0006275471872267167,
+      "relative_error_2pct_vs_fixed": 0.0006667785458533688
+    },
+    {
+      "eta": 0.5,
+      "protocol": "adaptive_strict",
+      "relative_error_1pct_vs_fixed": 0.00030107630147967245,
+      "relative_error_2pct_vs_fixed": 0.0003097243444637583
+    },
+    {
+      "eta": 1.0,
+      "protocol": "adaptive_current",
+      "relative_error_1pct_vs_fixed": 0.0010238820064908602,
+      "relative_error_2pct_vs_fixed": 0.0007635766899068766
+    },
+    {
+      "eta": 1.0,
+      "protocol": "adaptive_strict",
+      "relative_error_1pct_vs_fixed": 0.0004811842946476399,
+      "relative_error_2pct_vs_fixed": 0.0003441968974799749
+    }
+  ],
+  "selected_protocol": "adaptive_strict",
+  "selection_reason": "Strict adaptive stepping reaches t=0.5 and t=1 exactly through Outputs/sync_times, keeps the benchmark convergence controls, and is compared against fixed_200.",
+  "selected_protocol_max_relative_difference_vs_fixed": 0.0004811842946476399
+}

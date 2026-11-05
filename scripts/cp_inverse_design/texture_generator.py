@@ -237,7 +237,7 @@ def write_cp_material_include(path: Path, eta: float) -> dict[str, object]:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
     with path.with_name("orientations.csv").open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(["grain_id", "phi1_deg", "Phi_deg", "phi2_deg", "q_w", "q_x", "q_y", "q_z"])
         for grain, (euler, q) in enumerate(zip(eulers, quaternions), start=1):
             writer.writerow([grain, *euler, *q])
