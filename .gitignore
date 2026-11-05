@@ -207,6 +207,28 @@ framework/contrib/exodiff/exodiff
 peacock_*.i
 peacock_*.e
 
+# Real CP inverse-design runs are reproducible. Keep large raw runs, Exodus, checkpoints, and
+# logs out of Git while publishing compact machine-readable summaries and research figures.
+/results/cp_inverse_design*/**
+!/results/cp_inverse_design*/
+!/results/cp_inverse_design*/target_properties.json
+!/results/cp_inverse_design*/optimization_history.csv
+!/results/cp_inverse_design*/random_search_history.csv
+!/results/cp_inverse_design*/best_design.json
+!/results/cp_inverse_design*/cp_inverse_design_summary.json
+!/results/cp_inverse_design*/regression_checks.json
+!/results/cp_inverse_design*/time_integration_study.csv
+!/results/cp_inverse_design*/time_integration_study.json
+!/results/cp_inverse_design*/figures/
+!/results/cp_inverse_design*/figures/*.png
+!/results/cp_inverse_design*/animations/
+!/results/cp_inverse_design*/animations/*.gif
+!/results/cp_inverse_design*/verification/
+/results/cp_inverse_design*/verification/**
+!/results/cp_inverse_design*/verification/verification_summary.json
+# Discarded exploratory target (eta=0.90); it was intentionally not a completed workflow.
+/results/cp_inverse_design_challenge_02/
+
 # On linux, shared libs end in .0 sometimes
 libpcre-opt*
 libpcre-dbg*
