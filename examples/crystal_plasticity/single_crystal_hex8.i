@@ -5,6 +5,11 @@ Phi = 0
 phi2 = 0
 steps = 20
 max_strain = 0.02
+cp_local_solver = auto
+cp_reuse_lu = true
+cp_optimize_tensors = true
+cp_optimize_scalars = true
+cp_predictor = previous
 
 [GlobalParams]
   displacements = 'disp_x disp_y disp_z'
@@ -86,6 +91,11 @@ max_strain = 0.02
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics]
     type = CrystalPlasticityDiagnostics

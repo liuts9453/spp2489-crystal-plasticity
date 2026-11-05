@@ -28,6 +28,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g01]
     type = CrystalPlasticityDiagnostics
@@ -57,6 +62,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g02]
     type = CrystalPlasticityDiagnostics
@@ -86,6 +96,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g03]
     type = CrystalPlasticityDiagnostics
@@ -115,6 +130,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g04]
     type = CrystalPlasticityDiagnostics
@@ -144,6 +164,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g05]
     type = CrystalPlasticityDiagnostics
@@ -173,6 +198,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g06]
     type = CrystalPlasticityDiagnostics
@@ -202,6 +232,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g07]
     type = CrystalPlasticityDiagnostics
@@ -231,6 +266,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g08]
     type = CrystalPlasticityDiagnostics
@@ -260,6 +300,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g09]
     type = CrystalPlasticityDiagnostics
@@ -289,6 +334,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g10]
     type = CrystalPlasticityDiagnostics
@@ -318,6 +368,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g11]
     type = CrystalPlasticityDiagnostics
@@ -347,6 +402,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g12]
     type = CrystalPlasticityDiagnostics
@@ -376,6 +436,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g13]
     type = CrystalPlasticityDiagnostics
@@ -405,6 +470,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g14]
     type = CrystalPlasticityDiagnostics
@@ -434,6 +504,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g15]
     type = CrystalPlasticityDiagnostics
@@ -463,6 +538,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g16]
     type = CrystalPlasticityDiagnostics
@@ -492,6 +572,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g17]
     type = CrystalPlasticityDiagnostics
@@ -521,6 +606,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g18]
     type = CrystalPlasticityDiagnostics
@@ -550,6 +640,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g19]
     type = CrystalPlasticityDiagnostics
@@ -579,6 +674,11 @@ orientation_phi2 = '101.380857516 241.85735342 175.450703786 33.4398775527 4.628
     local_absolute_tolerance = 1e-10
     local_relative_tolerance = 1e-9
     local_max_iterations = 60
+    local_solver_mode = ${cp_local_solver}
+    reuse_tangent_factorization = ${cp_reuse_lu}
+    optimized_tensor_evaluation = ${cp_optimize_tensors}
+    specialize_scalar_operations = ${cp_optimize_scalars}
+    local_predictor = ${cp_predictor}
   []
   [diagnostics_g20]
     type = CrystalPlasticityDiagnostics

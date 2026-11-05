@@ -6,6 +6,11 @@ ny = 16
 steps = 20
 H11 = 0.02
 cp_xm = 0.10
+cp_local_solver = auto
+cp_reuse_lu = true
+cp_optimize_tensors = true
+cp_optimize_scalars = true
+cp_predictor = previous
 run_name = cp_16_s20
 
 !include ../polycrystal_20_centers.i
@@ -616,6 +621,56 @@ run_name = cp_16_s20
   [cp_update_calls]
     type = CrystalPlasticityTiming
     metric = calls
+    execute_on = TIMESTEP_END
+  []
+  [cp_residual_seconds]
+    type = CrystalPlasticityTiming
+    metric = residual_seconds
+    execute_on = TIMESTEP_END
+  []
+  [cp_jacobian_seconds]
+    type = CrystalPlasticityTiming
+    metric = jacobian_seconds
+    execute_on = TIMESTEP_END
+  []
+  [cp_linear_solve_seconds]
+    type = CrystalPlasticityTiming
+    metric = linear_solve_seconds
+    execute_on = TIMESTEP_END
+  []
+  [cp_line_search_seconds]
+    type = CrystalPlasticityTiming
+    metric = line_search_seconds
+    execute_on = TIMESTEP_END
+  []
+  [cp_tangent_seconds]
+    type = CrystalPlasticityTiming
+    metric = tangent_seconds
+    execute_on = TIMESTEP_END
+  []
+  [cp_local_iterations_total]
+    type = CrystalPlasticityTiming
+    metric = local_newton_iterations
+    execute_on = TIMESTEP_END
+  []
+  [cp_substeps_total]
+    type = CrystalPlasticityTiming
+    metric = substeps
+    execute_on = TIMESTEP_END
+  []
+  [cp_line_search_evaluations]
+    type = CrystalPlasticityTiming
+    metric = line_search_evaluations
+    execute_on = TIMESTEP_END
+  []
+  [cp_grouped_calls]
+    type = CrystalPlasticityTiming
+    metric = grouped_calls
+    execute_on = TIMESTEP_END
+  []
+  [cp_legacy_calls]
+    type = CrystalPlasticityTiming
+    metric = legacy_calls
     execute_on = TIMESTEP_END
   []
   [cp_local_iterations_bar]
