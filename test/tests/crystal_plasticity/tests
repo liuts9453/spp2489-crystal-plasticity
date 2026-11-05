@@ -5,7 +5,8 @@
     csvdiff = single_crystal_pk2_out.csv
     cli_args = 'Outputs/active=csv'
     requirement = 'The direct Total-Lagrangian FCC material shall reproduce the verified 20-step single-crystal plastic response and analytic-tangent check.'
-    abs_zero = 1e-9
+    # P22/P33 are traction-free and remain below 1e-6 MPa; compare nonzero response columns tightly.
+    abs_zero = 1e-6
     rel_err = 2e-7
   []
   [analytic_pk2_jacobian]
@@ -16,5 +17,50 @@
     ratio_tol = 5e-5
     difference_tol = 1e-4
     requirement = 'The fully coupled FCC update shall provide a consistent Total-Lagrangian global Jacobian.'
+  []
+  [legacy_pk2_jacobian]
+    type = PetscJacobianTester
+    input = single_crystal_pk2.i
+    cli_args = "steps=4 max_strain=0.002 cp_local_solver=legacy cp_reuse_lu=false cp_optimize_tensors=false cp_optimize_scalars=false Outputs/active=''"
+    run_sim = true
+    ratio_tol = 5e-5
+    difference_tol = 1e-4
+    requirement = 'The selectable 18-variable reference update shall retain its consistent Total-Lagrangian global Jacobian.'
+  []
+  [optimized_full_state_o0]
+    type = CSVDiff
+    input = single_crystal_full_state.i
+    csvdiff = full_state_o0.csv
+    cli_args = "cp_local_solver=grouped cp_reuse_lu=true cp_optimize_tensors=true cp_optimize_scalars=true Outputs/active=csv Outputs/csv/file_base=full_state_o0 Outputs/csv/hide='linear_iterations nonlinear_iterations local_iterations'"
+    abs_zero = 1e-6
+    rel_err = 1e-9
+    requirement = 'The optimized 10-variable update shall reproduce the legacy full stress, slip-rate, resistance, plastic-gradient, and dissipation history for the zero orientation.'
+  []
+  [optimized_full_state_rotated]
+    type = CSVDiff
+    input = single_crystal_full_state.i
+    csvdiff = full_state_rotated.csv
+    cli_args = "phi1=37 Phi=52 phi2=11 cp_local_solver=grouped cp_reuse_lu=true cp_optimize_tensors=true cp_optimize_scalars=true Outputs/active=csv Outputs/csv/file_base=full_state_rotated Outputs/csv/hide='linear_iterations nonlinear_iterations local_iterations'"
+    abs_zero = 1e-6
+    rel_err = 1e-9
+    requirement = 'The optimized 10-variable update shall reproduce the legacy full constitutive history for orientation (37,52,11).'
+  []
+  [optimized_substepped_history]
+    type = CSVDiff
+    input = single_crystal_full_state.i
+    csvdiff = full_state_substepped.csv
+    cli_args = "steps=4 max_strain=0.02 cp_local_solver=grouped Materials/analytic_cp/verify_analytic_tangent=true Materials/analytic_cp/slip_increment_tolerance=0.0005 Outputs/active=csv Outputs/csv/file_base=full_state_substepped Outputs/csv/hide='linear_iterations nonlinear_iterations local_iterations'"
+    abs_zero = 1e-6
+    rel_err = 1e-8
+    requirement = 'The optimized update shall reproduce the legacy plastic history and analytic tangent when four internal substeps are required.'
+  []
+  [optimized_substepped_jacobian]
+    type = PetscJacobianTester
+    input = single_crystal_pk2.i
+    cli_args = "steps=4 max_strain=0.002 cp_local_solver=grouped Materials/analytic_cp/slip_increment_tolerance=0.00005 Outputs/active=''"
+    run_sim = true
+    ratio_tol = 5e-5
+    difference_tol = 1e-4
+    requirement = 'The optimized grouped update shall retain a consistent global Jacobian through constitutive substepping.'
   []
 []

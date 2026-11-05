@@ -8,8 +8,14 @@ CrystalPlasticityTiming::validParams()
 {
   InputParameters params = GeneralPostprocessor::validParams();
   params.addClassDescription("Reports cumulative analytic PK2 crystal-plasticity update timing.");
-  params.addParam<MooseEnum>(
-      "metric", MooseEnum("seconds calls", "seconds"), "Quantity to report.");
+  params.addParam<MooseEnum>("metric",
+                             MooseEnum("seconds total_seconds residual_seconds jacobian_seconds "
+                                       "linear_solve_seconds line_search_seconds tangent_seconds "
+                                       "calls local_newton_iterations substeps "
+                                       "line_search_evaluations tangent_calls grouped_calls "
+                                       "legacy_calls",
+                                       "seconds"),
+                             "Mutually exclusive phase time or cumulative event count to report.");
   return params;
 }
 
@@ -21,10 +27,7 @@ CrystalPlasticityTiming::CrystalPlasticityTiming(const InputParameters & paramet
 void
 CrystalPlasticityTiming::finalize()
 {
-  _value =
-      _metric == "seconds"
-          ? ComputeLagrangianFCCCrystalPlasticityStress::cumulativeSeconds()
-          : static_cast<Real>(ComputeLagrangianFCCCrystalPlasticityStress::cumulativeCalls());
+  _value = ComputeLagrangianFCCCrystalPlasticityStress::cumulativeMetric(_metric);
   gatherSum(_value);
 }
 
