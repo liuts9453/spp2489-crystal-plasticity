@@ -50,6 +50,19 @@ Generated Exodus, CSV, timing logs, and benchmark summaries are written below
 `results/crystal_plasticity/` and `results/cp_inverse_design/`; these large,
 reproducible artifacts are intentionally ignored by Git.
 
+Run the two-parameter `(eta, theta)` workflow on a fixed, real Neper periodic
+TRI6 polycrystal (deterministic DOE, sequential BO, independent coarse rerun,
+same-tessellation fine mesh, time refinement, figures, and report):
+
+```bash
+conda run --no-capture-output -n spp2489-inverse \
+  python scripts/cp_inverse_design_2d/optimize_texture_2d.py \
+  --max-bo-evals 20 --target-tolerance 0.01 --seed 2026 --mpi-ranks 8
+```
+
+Neper itself is isolated in the `spp2489-neper` environment. Generate or audit
+the fixed meshes with `scripts/cp_inverse_design_2d/generate_neper_rve.py`.
+
 ## Project structure
 
 - `include/materials/`, `src/materials/`: finite-strain constitutive models,
@@ -63,6 +76,14 @@ reproducible artifacts are intentionally ignored by Git.
 - `scripts/cp_inverse_design/`: SO(3) texture generation, isolated CP forward
   solves, dual-property extraction, Bayesian optimization, validation, plots,
   animation, and focused Python regressions.
+- `scripts/cp_inverse_design_2d/`: fixed-seed Neper tessellation/mesh conversion,
+  periodic-mesh validation, two-parameter SO(3) texture generation, proof/flow
+  extraction, real-FEM Bayesian optimization, high-fidelity verification, and
+  publication plotting. This workflow intentionally has no random-search
+  comparison.
+- `results/cp_inverse_design_2d/`: reproducible raw runs, public target,
+  compact optimization history, verification artifacts, copied Exodus files,
+  and figures (large raw files remain ignored by Git).
 - `test/tests/crystal_plasticity/`: TestHarness response, full-state history,
   substepping, and global Jacobian regressions.
 
@@ -72,6 +93,7 @@ reproducible artifacts are intentionally ignored by Git.
 - [FCC local-integrator optimization](CRYSTAL_PLASTICITY_OPTIMIZATION_REPORT.md)
 - [Finite-strain CP inverse design](CP_INVERSE_DESIGN_REPORT.md)
 - [CP inverse design with a discriminating target](CP_INVERSE_DESIGN_REPORT_CHALLENGE_03.md)
+- [Two-parameter CP inverse design on a Neper RVE](CP_INVERSE_DESIGN_2D_REPORT.md)
 
 The optimization report records the exact reduction and derivatives, validation
 data, benchmark commands, measured speedups, and remaining bottlenecks.

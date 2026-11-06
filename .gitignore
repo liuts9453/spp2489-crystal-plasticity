@@ -216,9 +216,16 @@ peacock_*.e
 !/results/cp_inverse_design*/random_search_history.csv
 !/results/cp_inverse_design*/best_design.json
 !/results/cp_inverse_design*/cp_inverse_design_summary.json
+!/results/cp_inverse_design*/cp_inverse_design_2d_summary.json
 !/results/cp_inverse_design*/regression_checks.json
 !/results/cp_inverse_design*/time_integration_study.csv
 !/results/cp_inverse_design*/time_integration_study.json
+!/results/cp_inverse_design*/meshes/
+/results/cp_inverse_design*/meshes/**
+!/results/cp_inverse_design*/meshes/*_mesh_metrics.json
+!/results/cp_inverse_design*/neper/
+/results/cp_inverse_design*/neper/**
+!/results/cp_inverse_design*/neper/neper_generation_manifest.json
 !/results/cp_inverse_design*/figures/
 !/results/cp_inverse_design*/figures/*.png
 !/results/cp_inverse_design*/animations/

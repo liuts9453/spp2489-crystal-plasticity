@@ -1,0 +1,382 @@
+{
+  "workflow": "fixed 20-grain periodic Neper tessellation with MOOSE-compatible TRI6 meshes",
+  "neper_version": "5.0.0",
+  "gmsh_version": "4.12.1",
+  "seed": 2026,
+  "dimension": 2,
+  "domain_um": [
+    200.0,
+    200.0
+  ],
+  "grain_count": 20,
+  "periodicity": [
+    "x",
+    "y"
+  ],
+  "tessellation": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/neper/rve20_periodic.tess",
+  "tessellation_sha256": "9dbe4c2feb2df9bd07abc939e67b4f12cf4983e357e7d3597ce1597cc7e7e047",
+  "commands": [
+    {
+      "stage": "periodic_tessellation",
+      "command": [
+        "/home/liu/miniforge/envs/spp2489-neper/bin/neper",
+        "-T",
+        "-dim",
+        "2",
+        "-n",
+        "20",
+        "-id",
+        "2026",
+        "-domain",
+        "square(200,200)",
+        "-periodicity",
+        "all",
+        "-morpho",
+        "voronoi",
+        "-crysym",
+        "cubic",
+        "-format",
+        "tess,geo",
+        "-o",
+        "rve20_periodic"
+      ],
+      "wall_time_s": 0.0
+    },
+    {
+      "stage": "neper_raw_mesh_coarse",
+      "command": [
+        "/home/liu/miniforge/envs/spp2489-neper/bin/neper",
+        "-M",
+        "rve20_periodic.tess",
+        "-elttype",
+        "tri",
+        "-order",
+        "2",
+        "-cl",
+        "6",
+        "-interface",
+        "continuous",
+        "-format",
+        "msh,per",
+        "-o",
+        "rve20_neper_raw_coarse"
+      ],
+      "wall_time_s": 0.0
+    },
+    {
+      "stage": "neper_raw_mesh_fine",
+      "command": [
+        "/home/liu/miniforge/envs/spp2489-neper/bin/neper",
+        "-M",
+        "rve20_periodic.tess",
+        "-elttype",
+        "tri",
+        "-order",
+        "2",
+        "-cl",
+        "4",
+        "-interface",
+        "continuous",
+        "-format",
+        "msh,per",
+        "-o",
+        "rve20_neper_raw_fine"
+      ],
+      "wall_time_s": 0.9295569030218758
+    }
+  ],
+  "meshes": {
+    "coarse": {
+      "conversion": {
+        "neper_grains": 20,
+        "fundamental_domain_pieces": 32,
+        "fundamental_domain_area_um2": 40000.0,
+        "geometric_points": 66,
+        "geometric_lines": 97,
+        "boundary_segments": {
+          "left": 5,
+          "right": 5,
+          "bottom": 8,
+          "top": 8
+        },
+        "opposite_boundary_geometry_matches": true,
+        "tessellation": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/neper/rve20_periodic.tess",
+        "geometry": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.geo",
+        "mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.msh",
+        "characteristic_length_um": 6.0,
+        "gmsh_command": [
+          "/usr/bin/gmsh",
+          "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.geo",
+          "-2",
+          "-format",
+          "msh2",
+          "-order",
+          "2",
+          "-o",
+          "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.msh"
+        ],
+        "gmsh_log": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.gmsh.log"
+      },
+      "metrics": {
+        "mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_coarse_tri6.msh",
+        "node_count": 6709,
+        "element_count": 3280,
+        "quadrature_point_count_assuming_TRI6_default_three_point_rule": 9840,
+        "grain_element_counts": {
+          "1": 138,
+          "2": 94,
+          "3": 122,
+          "4": 195,
+          "5": 35,
+          "6": 216,
+          "7": 74,
+          "8": 135,
+          "9": 170,
+          "10": 139,
+          "11": 128,
+          "12": 158,
+          "13": 265,
+          "14": 163,
+          "15": 116,
+          "16": 197,
+          "17": 175,
+          "18": 271,
+          "19": 192,
+          "20": 297
+        },
+        "grain_area_um2": {
+          "1": 1708.7231032470472,
+          "2": 1162.7140880716506,
+          "3": 1407.7321407708125,
+          "4": 2488.264563267944,
+          "5": 452.3735474180278,
+          "6": 2594.1260567252702,
+          "7": 887.488188667868,
+          "8": 1538.5748823514637,
+          "9": 2070.0309577236785,
+          "10": 1716.071443979469,
+          "11": 1548.1894120377951,
+          "12": 2053.300073879313,
+          "13": 3112.5605971292066,
+          "14": 2166.6889691915276,
+          "15": 1272.5556025916123,
+          "16": 2505.5097832670967,
+          "17": 2221.948337415188,
+          "18": 3045.9245095765464,
+          "19": 2310.040080440621,
+          "20": 3737.183662247867
+        },
+        "grain_area_fraction": {
+          "1": 0.042718077581176184,
+          "2": 0.029067852201791266,
+          "3": 0.035193303519270316,
+          "4": 0.06220661408169861,
+          "5": 0.011309338685450695,
+          "6": 0.06485315141813175,
+          "7": 0.0221872047166967,
+          "8": 0.03846437205878659,
+          "9": 0.051750773943091966,
+          "10": 0.04290178609948672,
+          "11": 0.03870473530094488,
+          "12": 0.05133250184698283,
+          "13": 0.07781401492823016,
+          "14": 0.05416722422978819,
+          "15": 0.03181389006479031,
+          "16": 0.06263774458167742,
+          "17": 0.05554870843537969,
+          "18": 0.07614811273941366,
+          "19": 0.05775100201101552,
+          "20": 0.09342959155619666
+        },
+        "domain_area_um2": 40000.0,
+        "minimum_triangle_quality": 0.10100948901538194,
+        "mean_triangle_quality": 0.9729684537784975,
+        "maximum_aspect_ratio": 17.77410981238167,
+        "boundary_edge_count": 148,
+        "shared_grain_boundary_edge_count": 336,
+        "nonmanifold_edge_count": 0,
+        "boundary_element_counts": {
+          "left": 36,
+          "right": 36,
+          "bottom": 38,
+          "top": 38
+        },
+        "periodic_node_counts": {
+          "x": [
+            73,
+            73
+          ],
+          "y": [
+            77,
+            77
+          ]
+        },
+        "maximum_periodic_coordinate_error_um": 1.000159954855917e-10,
+        "checks": {
+          "twenty_grain_blocks": true,
+          "all_nodes_used": true,
+          "positive_elements": true,
+          "domain_area": true,
+          "four_boundary_sets": true,
+          "periodic_node_counts": true,
+          "periodic_coordinates": true,
+          "manifold": true,
+          "boundary_topology": true,
+          "shared_grain_boundaries": true,
+          "acceptable_minimum_quality": true
+        },
+        "all_checks_passed": true,
+        "generation_wall_time_s": 8.112896466627717e-05,
+        "neper_raw_mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/neper/rve20_neper_raw_coarse.msh",
+        "neper_raw_mesh_sha256": "b14c114b57925dbf49756f2a89fc6fe73d477f4be66e24d270e20864695b7250",
+        "moose_mesh_sha256": "f04a0f1928024a5475a9b4947e46fe78e2a536055a4ad7b09e61d0a1565b4d51"
+      }
+    },
+    "fine": {
+      "conversion": {
+        "neper_grains": 20,
+        "fundamental_domain_pieces": 32,
+        "fundamental_domain_area_um2": 40000.0,
+        "geometric_points": 66,
+        "geometric_lines": 97,
+        "boundary_segments": {
+          "left": 5,
+          "right": 5,
+          "bottom": 8,
+          "top": 8
+        },
+        "opposite_boundary_geometry_matches": true,
+        "tessellation": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/neper/rve20_periodic.tess",
+        "geometry": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.geo",
+        "mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.msh",
+        "characteristic_length_um": 4.0,
+        "gmsh_command": [
+          "/usr/bin/gmsh",
+          "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.geo",
+          "-2",
+          "-format",
+          "msh2",
+          "-order",
+          "2",
+          "-o",
+          "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.msh"
+        ],
+        "gmsh_log": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.gmsh.log"
+      },
+      "metrics": {
+        "mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/meshes/rve20_fine_tri6.msh",
+        "node_count": 13813,
+        "element_count": 6798,
+        "quadrature_point_count_assuming_TRI6_default_three_point_rule": 20394,
+        "grain_element_counts": {
+          "1": 281,
+          "2": 204,
+          "3": 241,
+          "4": 399,
+          "5": 73,
+          "6": 456,
+          "7": 156,
+          "8": 263,
+          "9": 347,
+          "10": 289,
+          "11": 277,
+          "12": 337,
+          "13": 521,
+          "14": 361,
+          "15": 221,
+          "16": 410,
+          "17": 382,
+          "18": 554,
+          "19": 390,
+          "20": 636
+        },
+        "grain_area_um2": {
+          "1": 1708.7231032470445,
+          "2": 1162.7140880716531,
+          "3": 1407.7321407708132,
+          "4": 2488.264563267942,
+          "5": 452.37354741802676,
+          "6": 2594.1260567252707,
+          "7": 887.4881886678669,
+          "8": 1538.574882351464,
+          "9": 2070.0309577236817,
+          "10": 1716.0714439794679,
+          "11": 1548.1894120377974,
+          "12": 2053.300073879315,
+          "13": 3112.5605971292075,
+          "14": 2166.6889691915267,
+          "15": 1272.5556025916112,
+          "16": 2505.509783267096,
+          "17": 2221.948337415188,
+          "18": 3045.9245095765496,
+          "19": 2310.040080440621,
+          "20": 3737.1836622478636
+        },
+        "grain_area_fraction": {
+          "1": 0.042718077581176114,
+          "2": 0.02906785220179133,
+          "3": 0.03519330351927033,
+          "4": 0.062206614081698544,
+          "5": 0.011309338685450669,
+          "6": 0.06485315141813176,
+          "7": 0.022187204716696673,
+          "8": 0.038464372058786604,
+          "9": 0.05175077394309204,
+          "10": 0.042901786099486694,
+          "11": 0.03870473530094493,
+          "12": 0.05133250184698287,
+          "13": 0.07781401492823019,
+          "14": 0.05416722422978817,
+          "15": 0.03181389006479028,
+          "16": 0.0626377445816774,
+          "17": 0.05554870843537969,
+          "18": 0.07614811273941374,
+          "19": 0.05775100201101552,
+          "20": 0.0934295915561966
+        },
+        "domain_area_um2": 40000.0,
+        "minimum_triangle_quality": 0.14656845628474957,
+        "mean_triangle_quality": 0.9818120136957421,
+        "maximum_aspect_ratio": 12.392559000519945,
+        "boundary_edge_count": 216,
+        "shared_grain_boundary_edge_count": 484,
+        "nonmanifold_edge_count": 0,
+        "boundary_element_counts": {
+          "left": 53,
+          "right": 53,
+          "bottom": 55,
+          "top": 55
+        },
+        "periodic_node_counts": {
+          "x": [
+            107,
+            107
+          ],
+          "y": [
+            111,
+            111
+          ]
+        },
+        "maximum_periodic_coordinate_error_um": 9.990230864787009e-11,
+        "checks": {
+          "twenty_grain_blocks": true,
+          "all_nodes_used": true,
+          "positive_elements": true,
+          "domain_area": true,
+          "four_boundary_sets": true,
+          "periodic_node_counts": true,
+          "periodic_coordinates": true,
+          "manifold": true,
+          "boundary_topology": true,
+          "shared_grain_boundaries": true,
+          "acceptable_minimum_quality": true
+        },
+        "all_checks_passed": true,
+        "generation_wall_time_s": 1.0442922410438769,
+        "neper_raw_mesh": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_2d/neper/rve20_neper_raw_fine.msh",
+        "neper_raw_mesh_sha256": "c8c8111242a551df9343c7fc803c4942940d5f812b97b23c87d1ef4a2ed40545",
+        "moose_mesh_sha256": "950c24d08df3a4f9e57483182a309f7375df7d791f711d54ca1f1a8618c546ec"
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "spp2489_cp_inverse_design_2d_target_v1",
+  "target_proof_stress_MPa": 360.53447991741604,
+  "target_flow_stress_2pct_MPa": 416.7624436857,
+  "proof_stress_definition": "0.2% offset proof stress under the prescribed macroscopic plane-strain loading condition",
+  "physical_loading_time_s": 1.0,
+  "loading_rate_per_s": 0.02,
+  "mesh_name": "coarse",
+  "mesh_sha256": "f04a0f1928024a5475a9b4947e46fe78e2a536055a4ad7b09e61d0a1565b4d51",
+  "mpi_ranks": 8,
+  "time_protocol": {
+    "name": "adaptive_strict",
+    "mode": "adaptive",
+    "steps": 40,
+    "sync_times": [
+      0.5,
+      1.0
+    ],
+    "nl_max_its": 25
+  },
+  "material_parameters": {
+    "C_ijkl_MPa": [
+      200000.0,
+      120000.0,
+      120000.0,
+      200000.0,
+      120000.0,
+      200000.0,
+      100000.0,
+      100000.0,
+      100000.0
+    ],
+    "reference_slip_rate_per_s": 0.001,
+    "rate_sensitivity": 0.1,
+    "initial_slip_resistance_MPa": 80.0,
+    "hardening_modulus_MPa": 400.0,
+    "saturation_resistance_MPa": 160.0,
+    "hardening_exponent": 1.0,
+    "latent_hardening_ratio": 1.4
+  },
+  "convergence_tolerances": {
+    "nl_max_its": 25,
+    "nl_rel_tol": 1e-10,
+    "nl_abs_tol": 1e-10,
+    "linear_tolerance": 1e-08,
+    "local_absolute_tolerance": 1e-10,
+    "local_relative_tolerance": 1e-09,
+    "local_max_iterations": 60
+  },
+  "application_commit": "95b3322c665c9ecc8e0c18099c9ed8983d122c6c",
+  "moose_commit": "11853d1623555a9e444ffb0725a4dc16f64fb255",
+  "converged": true,
+  "accepted_increments": 54,
+  "failed_attempts": 6,
+  "total_newton_iterations": 353,
+  "wall_time_s": 122.83794247696642,
+  "physical_checks": {
+    "reached_physical_end_time": true,
+    "exact_synchronized_targets": true,
+    "proof_intersection": true,
+    "initial_fit": true,
+    "P22_constraint": true,
+    "macro_shear_constraints": true,
+    "plasticity_active": true,
+    "finite_state": true,
+    "positive_slip_resistance": true,
+    "plastic_volume_error": true,
+    "nonnegative_plastic_dissipation": true,
+    "hill_mandel": true,
+    "periodic_BCs": true,
+    "twenty_grain_blocks": true,
+    "required_exodus_fields": true,
+    "global_equilibrium": true
+  }
+}
