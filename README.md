@@ -63,6 +63,18 @@ conda run --no-capture-output -n spp2489-inverse \
 Neper itself is isolated in the `spp2489-neper` environment. Generate or audit
 the fixed meshes with `scripts/cp_inverse_design_2d/generate_neper_rve.py`.
 
+Build the PI-presentation package from the 28 cached real-FEM evaluations
+without rerunning MOOSE or Bayesian optimization:
+
+```bash
+conda run --no-capture-output -n spp2489-inverse \
+  python scripts/cp_inverse_design_2d/presentation/build_all_presentation_visuals.py
+```
+
+This writes three static figures (PNG/PDF/SVG), a 28-frame GIF, a 1080p H.264
+MP4, a provenance manifest, and a validation report to
+`results/cp_inverse_design_2d/presentation/`.
+
 ## Project structure
 
 - `include/materials/`, `src/materials/`: finite-strain constitutive models,
@@ -80,7 +92,8 @@ the fixed meshes with `scripts/cp_inverse_design_2d/generate_neper_rve.py`.
   periodic-mesh validation, two-parameter SO(3) texture generation, proof/flow
   extraction, real-FEM Bayesian optimization, high-fidelity verification, and
   publication plotting. This workflow intentionally has no random-search
-  comparison.
+  comparison. Its `presentation/` package creates the cached-data PI figures
+  and synchronized optimization animation.
 - `results/cp_inverse_design_2d/`: reproducible raw runs, public target,
   compact optimization history, verification artifacts, copied Exodus files,
   and figures (large raw files remain ignored by Git).
@@ -94,6 +107,7 @@ the fixed meshes with `scripts/cp_inverse_design_2d/generate_neper_rve.py`.
 - [Finite-strain CP inverse design](CP_INVERSE_DESIGN_REPORT.md)
 - [CP inverse design with a discriminating target](CP_INVERSE_DESIGN_REPORT_CHALLENGE_03.md)
 - [Two-parameter CP inverse design on a Neper RVE](CP_INVERSE_DESIGN_2D_REPORT.md)
+- [PI presentation visualization report](results/cp_inverse_design_2d/presentation/PRESENTATION_VISUALIZATION_REPORT.md)
 
 The optimization report records the exact reduction and derivatives, validation
 data, benchmark commands, measured speedups, and remaining bottlenecks.

@@ -233,6 +233,15 @@ peacock_*.e
 !/results/cp_inverse_design*/verification/
 /results/cp_inverse_design*/verification/**
 !/results/cp_inverse_design*/verification/verification_summary.json
+!/results/cp_inverse_design*/presentation/
+/results/cp_inverse_design*/presentation/**
+!/results/cp_inverse_design*/presentation/*.png
+!/results/cp_inverse_design*/presentation/*.pdf
+!/results/cp_inverse_design*/presentation/*.svg
+!/results/cp_inverse_design*/presentation/*.gif
+!/results/cp_inverse_design*/presentation/*.mp4
+!/results/cp_inverse_design*/presentation/*.json
+!/results/cp_inverse_design*/presentation/*.md
 # Discarded exploratory target (eta=0.90); it was intentionally not a completed workflow.
 /results/cp_inverse_design_challenge_02/
 
