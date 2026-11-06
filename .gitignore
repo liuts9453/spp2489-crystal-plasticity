@@ -217,6 +217,9 @@ peacock_*.e
 !/results/cp_inverse_design*/best_design.json
 !/results/cp_inverse_design*/cp_inverse_design_summary.json
 !/results/cp_inverse_design*/cp_inverse_design_2d_summary.json
+!/results/cp_inverse_design*/morphology_sensitivity.csv
+!/results/cp_inverse_design*/morphology_statistics.csv
+!/results/cp_inverse_design*/morphology_sensitivity_summary.json
 !/results/cp_inverse_design*/regression_checks.json
 !/results/cp_inverse_design*/time_integration_study.csv
 !/results/cp_inverse_design*/time_integration_study.json
@@ -233,6 +236,7 @@ peacock_*.e
 !/results/cp_inverse_design*/verification/
 /results/cp_inverse_design*/verification/**
 !/results/cp_inverse_design*/verification/verification_summary.json
+!/results/cp_inverse_design*/verification/homogeneous_control_summary.json
 !/results/cp_inverse_design*/presentation/
 /results/cp_inverse_design*/presentation/**
 !/results/cp_inverse_design*/presentation/*.png

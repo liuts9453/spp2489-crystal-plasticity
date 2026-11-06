@@ -1,0 +1,489 @@
+{
+  "study": "morphology numerical and realization uncertainty",
+  "texture": {
+    "eta": 0.7729026253348713,
+    "theta_deg": 4.242186925858952
+  },
+  "mpi_ranks": 8,
+  "fine_results": [
+    {
+      "input_a": 0.7,
+      "achieved_a": 0.7121541424476034,
+      "geometry_seed": 2026,
+      "mesh_name": "fine",
+      "protocol": "adaptive_strict",
+      "proof_stress_MPa": 358.905481751859,
+      "flow_stress_2pct_MPa": 415.41664295386,
+      "mean_accumulated_slip": 0.058515873760362,
+      "maximum_accumulated_slip": 0.16005134855154,
+      "minimum_triangle_quality": 0.08151220642817468,
+      "maximum_aspect_ratio": 21.24897464400122,
+      "area_coefficient_of_variation": 0.39981035134523135,
+      "orientation_dyad": [
+        [
+          0.4365622943304128,
+          0.3915182457804537,
+          0.03980760199161715
+        ],
+        [
+          0.3915182457804537,
+          0.49232462264343424,
+          0.015943269856424237
+        ],
+        [
+          0.03980760199161715,
+          0.015943269856424237,
+          0.07111308302615302
+        ]
+      ],
+      "wall_time_s": 238.80590114102233,
+      "failed_attempts": 7,
+      "accepted_increments": 56,
+      "all_checks_passed": true,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/mesh_verification_seed_2026_a_0p700000_eta_0.772902625_theta_+4.2421869_fine_adaptive_strict_078443c6270d"
+    },
+    {
+      "input_a": 1.0,
+      "achieved_a": 1.034525517125434,
+      "geometry_seed": 2026,
+      "mesh_name": "fine",
+      "protocol": "adaptive_strict",
+      "proof_stress_MPa": 358.47555051538535,
+      "flow_stress_2pct_MPa": 414.77257659015,
+      "mean_accumulated_slip": 0.058482308704061,
+      "maximum_accumulated_slip": 0.14350831872513,
+      "minimum_triangle_quality": 0.14656845628474957,
+      "maximum_aspect_ratio": 12.392559000519945,
+      "area_coefficient_of_variation": 0.3900919576109918,
+      "orientation_dyad": [
+        [
+          0.43433514270074736,
+          0.39055700849790287,
+          0.03583497154616741
+        ],
+        [
+          0.39055700849790287,
+          0.49379790117588274,
+          0.011705889907731495
+        ],
+        [
+          0.03583497154616741,
+          0.011705889907731495,
+          0.07186695612336995
+        ]
+      ],
+      "wall_time_s": 225.01219251099974,
+      "failed_attempts": 6,
+      "accepted_increments": 54,
+      "all_checks_passed": true,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/mesh_verification_seed_2026_a_1p000000_eta_0.772902625_theta_+4.2421869_fine_adaptive_strict_557aa65f382d"
+    },
+    {
+      "input_a": 1.5,
+      "achieved_a": 1.4320869126300346,
+      "geometry_seed": 2026,
+      "mesh_name": "fine",
+      "protocol": "adaptive_strict",
+      "proof_stress_MPa": 358.9949958450349,
+      "flow_stress_2pct_MPa": 414.13670308341,
+      "mean_accumulated_slip": 0.058403163063581,
+      "maximum_accumulated_slip": 0.17417287811433,
+      "minimum_triangle_quality": 0.03295412439000118,
+      "maximum_aspect_ratio": 52.791020026040606,
+      "area_coefficient_of_variation": 0.3542239343803391,
+      "orientation_dyad": [
+        [
+          0.4335132236395168,
+          0.3891081068809332,
+          0.03209548387347236
+        ],
+        [
+          0.3891081068809332,
+          0.4920967949549344,
+          0.007880029932313182
+        ],
+        [
+          0.03209548387347236,
+          0.007880029932313182,
+          0.07438998140554892
+        ]
+      ],
+      "wall_time_s": 220.6187002210063,
+      "failed_attempts": 6,
+      "accepted_increments": 55,
+      "all_checks_passed": true,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/mesh_verification_seed_2026_a_1p500000_eta_0.772902625_theta_+4.2421869_fine_adaptive_strict_1796218e3c5b"
+    }
+  ],
+  "time_refined_results": [
+    {
+      "input_a": 0.7,
+      "achieved_a": 0.7121541424476034,
+      "geometry_seed": 2026,
+      "mesh_name": "coarse",
+      "protocol": "adaptive_refined",
+      "proof_stress_MPa": 358.97458127927894,
+      "flow_stress_2pct_MPa": 415.5714505695,
+      "mean_accumulated_slip": 0.058535725308089,
+      "maximum_accumulated_slip": 0.15193744308988,
+      "minimum_triangle_quality": 0.05440856498121134,
+      "maximum_aspect_ratio": 31.834157143585724,
+      "area_coefficient_of_variation": 0.39981035134523135,
+      "orientation_dyad": [
+        [
+          0.4365622943304128,
+          0.3915182457804537,
+          0.03980760199161715
+        ],
+        [
+          0.3915182457804537,
+          0.49232462264343424,
+          0.015943269856424237
+        ],
+        [
+          0.03980760199161715,
+          0.015943269856424237,
+          0.07111308302615302
+        ]
+      ],
+      "wall_time_s": 139.49524536100216,
+      "failed_attempts": 4,
+      "accepted_increments": 90,
+      "all_checks_passed": true,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/time_verification_seed_2026_a_0p700000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_refined_a96ed394135f"
+    },
+    {
+      "input_a": 1.5,
+      "achieved_a": 1.4320869126300346,
+      "geometry_seed": 2026,
+      "mesh_name": "coarse",
+      "protocol": "adaptive_refined",
+      "proof_stress_MPa": 359.3900454024984,
+      "flow_stress_2pct_MPa": 414.3326415167,
+      "mean_accumulated_slip": 0.05842800052275,
+      "maximum_accumulated_slip": 0.16461733482829,
+      "minimum_triangle_quality": 0.031812327499351103,
+      "maximum_aspect_ratio": 56.065534165756496,
+      "area_coefficient_of_variation": 0.3542239343803391,
+      "orientation_dyad": [
+        [
+          0.4335132236395168,
+          0.3891081068809332,
+          0.03209548387347236
+        ],
+        [
+          0.3891081068809332,
+          0.4920967949549344,
+          0.007880029932313182
+        ],
+        [
+          0.03209548387347236,
+          0.007880029932313182,
+          0.07438998140554892
+        ]
+      ],
+      "wall_time_s": 147.04574940894963,
+      "failed_attempts": 5,
+      "accepted_increments": 90,
+      "all_checks_passed": true,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/time_verification_seed_2026_a_1p500000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_refined_b9aac800acbc"
+    }
+  ],
+  "realization_results": {
+    "2027": [
+      {
+        "input_a": 1.0,
+        "achieved_a": 1.0328260851994668,
+        "geometry_seed": 2027,
+        "mesh_name": "coarse",
+        "protocol": "adaptive_strict",
+        "proof_stress_MPa": 364.05375655528917,
+        "flow_stress_2pct_MPa": 420.72182043551,
+        "mean_accumulated_slip": 0.059000856603649,
+        "maximum_accumulated_slip": 0.15361624503453,
+        "minimum_triangle_quality": 0.6083245470290275,
+        "maximum_aspect_ratio": 3.2587668216854535,
+        "area_coefficient_of_variation": 0.454175978327768,
+        "orientation_dyad": [
+          [
+            0.4334374519911069,
+            0.406341019698227,
+            0.01841053179589484
+          ],
+          [
+            0.406341019698227,
+            0.505222684341327,
+            0.0010775354114747338
+          ],
+          [
+            0.01841053179589484,
+            0.0010775354114747338,
+            0.061339863667566094
+          ]
+        ],
+        "wall_time_s": 108.80257919401629,
+        "failed_attempts": 6,
+        "accepted_increments": 53,
+        "all_checks_passed": true,
+        "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/realization_verification_seed_2027_a_1p000000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_strict_cb3397b9db1f"
+      },
+      {
+        "input_a": 1.5,
+        "achieved_a": 1.6261839181485427,
+        "geometry_seed": 2027,
+        "mesh_name": "coarse",
+        "protocol": "adaptive_strict",
+        "proof_stress_MPa": 363.1687520418796,
+        "flow_stress_2pct_MPa": 417.25142852522,
+        "mean_accumulated_slip": 0.058844859066114,
+        "maximum_accumulated_slip": 0.1357479396564,
+        "minimum_triangle_quality": 0.07562409045204493,
+        "maximum_aspect_ratio": 23.40331599881521,
+        "area_coefficient_of_variation": 0.408801721474312,
+        "orientation_dyad": [
+          [
+            0.432132646258629,
+            0.40679071815345036,
+            0.0180498420244207
+          ],
+          [
+            0.40679071815345036,
+            0.5070916048439178,
+            9.896386475471107e-05
+          ],
+          [
+            0.0180498420244207,
+            9.896386475471107e-05,
+            0.06077574889745322
+          ]
+        ],
+        "wall_time_s": 94.23441706900485,
+        "failed_attempts": 4,
+        "accepted_increments": 50,
+        "all_checks_passed": true,
+        "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/realization_verification_seed_2027_a_1p500000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_strict_2d262d4a9952"
+      }
+    ],
+    "2028": [
+      {
+        "input_a": 1.0,
+        "achieved_a": 1.0437344287504817,
+        "geometry_seed": 2028,
+        "mesh_name": "coarse",
+        "protocol": "adaptive_strict",
+        "proof_stress_MPa": 358.7294425635634,
+        "flow_stress_2pct_MPa": 412.14915271577,
+        "mean_accumulated_slip": 0.058246462137247,
+        "maximum_accumulated_slip": 0.13858798943116,
+        "minimum_triangle_quality": 0.04319470394147182,
+        "maximum_aspect_ratio": 40.3198445688374,
+        "area_coefficient_of_variation": 0.34267181023302734,
+        "orientation_dyad": [
+          [
+            0.41607285985699843,
+            0.3871621379857678,
+            0.0200593608867893
+          ],
+          [
+            0.3871621379857678,
+            0.509034858449015,
+            -0.0019587834351934355
+          ],
+          [
+            0.0200593608867893,
+            -0.0019587834351934355,
+            0.07489228169398653
+          ]
+        ],
+        "wall_time_s": 114.24683657800779,
+        "failed_attempts": 7,
+        "accepted_increments": 55,
+        "all_checks_passed": true,
+        "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/realization_verification_seed_2028_a_1p000000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_strict_965554dcf743"
+      },
+      {
+        "input_a": 1.5,
+        "achieved_a": 1.4286980547775443,
+        "geometry_seed": 2028,
+        "mesh_name": "coarse",
+        "protocol": "adaptive_strict",
+        "proof_stress_MPa": 359.6124294942916,
+        "flow_stress_2pct_MPa": 413.17675733383,
+        "mean_accumulated_slip": 0.058340744180977,
+        "maximum_accumulated_slip": 0.13167560143098,
+        "minimum_triangle_quality": 0.0831414531554799,
+        "maximum_aspect_ratio": 20.832577996078925,
+        "area_coefficient_of_variation": 0.3254914082931256,
+        "orientation_dyad": [
+          [
+            0.4206548688767334,
+            0.38874685308785345,
+            0.023242877461295594
+          ],
+          [
+            0.38874685308785345,
+            0.5067680291276593,
+            -0.0008970609842404789
+          ],
+          [
+            0.023242877461295594,
+            -0.0008970609842404789,
+            0.07257710199560727
+          ]
+        ],
+        "wall_time_s": 123.89023768802872,
+        "failed_attempts": 8,
+        "accepted_increments": 56,
+        "all_checks_passed": true,
+        "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/realization_verification_seed_2028_a_1p500000_eta_0.772902625_theta_+4.2421869_coarse_adaptive_strict_983e46e083ba"
+      }
+    ]
+  },
+  "mesh_comparisons": [
+    {
+      "input_a": 0.7,
+      "coarse_proof_stress_MPa": 358.92002156015354,
+      "fine_proof_stress_MPa": 358.905481751859,
+      "absolute_change_proof_stress_MPa": 0.014539808294557588,
+      "relative_change_proof_stress_MPa": 4.0509883598457255e-05,
+      "coarse_flow_stress_2pct_MPa": 415.49097733142,
+      "fine_flow_stress_2pct_MPa": 415.41664295386,
+      "absolute_change_flow_stress_2pct_MPa": 0.07433437756003514,
+      "relative_change_flow_stress_2pct_MPa": 0.00017890732077375935
+    },
+    {
+      "input_a": 1.0,
+      "coarse_proof_stress_MPa": 358.32805182483224,
+      "fine_proof_stress_MPa": 358.47555051538535,
+      "absolute_change_proof_stress_MPa": 0.14749869055310683,
+      "relative_change_proof_stress_MPa": 0.0004116303197641115,
+      "coarse_flow_stress_2pct_MPa": 414.86511155847,
+      "fine_flow_stress_2pct_MPa": 414.77257659015,
+      "absolute_change_flow_stress_2pct_MPa": 0.09253496832002384,
+      "relative_change_flow_stress_2pct_MPa": 0.00022304832520722147
+    },
+    {
+      "input_a": 1.5,
+      "coarse_proof_stress_MPa": 359.0864160334837,
+      "fine_proof_stress_MPa": 358.9949958450349,
+      "absolute_change_proof_stress_MPa": 0.09142018844880795,
+      "relative_change_proof_stress_MPa": 0.0002545910520889303,
+      "coarse_flow_stress_2pct_MPa": 414.24707087251,
+      "fine_flow_stress_2pct_MPa": 414.13670308341,
+      "absolute_change_flow_stress_2pct_MPa": 0.11036778909999612,
+      "relative_change_flow_stress_2pct_MPa": 0.00026642986000488403
+    }
+  ],
+  "time_comparisons": [
+    {
+      "input_a": 0.7,
+      "default_proof_stress_MPa": 358.92002156015354,
+      "refined_proof_stress_MPa": 358.97458127927894,
+      "absolute_change_proof_stress_MPa": 0.05455971912539326,
+      "relative_change_proof_stress_MPa": 0.0001520107986404132,
+      "default_flow_stress_2pct_MPa": 415.49097733142,
+      "refined_flow_stress_2pct_MPa": 415.5714505695,
+      "absolute_change_flow_stress_2pct_MPa": 0.08047323807994644,
+      "relative_change_flow_stress_2pct_MPa": 0.00019368227583858278
+    },
+    {
+      "input_a": 1.5,
+      "default_proof_stress_MPa": 359.0864160334837,
+      "refined_proof_stress_MPa": 359.3900454024984,
+      "absolute_change_proof_stress_MPa": 0.3036293690146863,
+      "relative_change_proof_stress_MPa": 0.0008455607214792936,
+      "default_flow_stress_2pct_MPa": 414.24707087251,
+      "refined_flow_stress_2pct_MPa": 414.3326415167,
+      "absolute_change_flow_stress_2pct_MPa": 0.08557064418999971,
+      "relative_change_flow_stress_2pct_MPa": 0.00020656909899149342
+    }
+  ],
+  "realization_comparisons": [
+    {
+      "geometry_seed": 2026,
+      "area_weighted_texture_dyad_distance_from_seed2026_a1": {
+        "1.0": 0.0,
+        "1.5": 0.008448404991208943
+      },
+      "a1_proof_stress_MPa": 358.32805182483224,
+      "a1p5_proof_stress_MPa": 359.0864160334837,
+      "paired_contrast_proof_stress_MPa": 0.7583642086514715,
+      "a1_flow_stress_2pct_MPa": 414.86511155847,
+      "a1p5_flow_stress_2pct_MPa": 414.24707087251,
+      "paired_contrast_flow_stress_2pct_MPa": -0.6180406859600112
+    },
+    {
+      "geometry_seed": 2027,
+      "area_weighted_texture_dyad_distance_from_seed2026_a1": {
+        "1.0": 0.03966821465005089,
+        "1.5": 0.04163794198114756
+      },
+      "a1_proof_stress_MPa": 364.05375655528917,
+      "a1p5_proof_stress_MPa": 363.1687520418796,
+      "paired_contrast_proof_stress_MPa": -0.8850045134095694,
+      "a1_flow_stress_2pct_MPa": 420.72182043551,
+      "a1p5_flow_stress_2pct_MPa": 417.25142852522,
+      "paired_contrast_flow_stress_2pct_MPa": -3.4703919102900045
+    },
+    {
+      "geometry_seed": 2028,
+      "area_weighted_texture_dyad_distance_from_seed2026_a1": {
+        "1.0": 0.03832838512767207,
+        "1.5": 0.03157882443375332
+      },
+      "a1_proof_stress_MPa": 358.7294425635634,
+      "a1p5_proof_stress_MPa": 359.6124294942916,
+      "paired_contrast_proof_stress_MPa": 0.8829869307281797,
+      "a1_flow_stress_2pct_MPa": 412.14915271577,
+      "a1p5_flow_stress_2pct_MPa": 413.17675733383,
+      "paired_contrast_flow_stress_2pct_MPa": 1.0276046180599678
+    }
+  ],
+  "uncertainty": {
+    "proof_stress_MPa": {
+      "five_level_morphology_range_MPa": 1.1349456446125714,
+      "mesh_envelope_MPa": 0.14749869055310683,
+      "time_integration_envelope_MPa": 0.3036293690146863,
+      "numerical_envelope_MPa": 0.3036293690146863,
+      "a1_realization_span_MPa": 5.7257047304569255,
+      "paired_a1p5_minus_a1_contrasts_MPa": [
+        0.7583642086514715,
+        -0.8850045134095694,
+        0.8829869307281797
+      ],
+      "paired_contrasts_same_sign": false,
+      "minimum_absolute_paired_effect_MPa": 0.7583642086514715
+    },
+    "flow_stress_2pct_MPa": {
+      "five_level_morphology_range_MPa": 1.2439064589100326,
+      "mesh_envelope_MPa": 0.11036778909999612,
+      "time_integration_envelope_MPa": 0.08557064418999971,
+      "numerical_envelope_MPa": 0.11036778909999612,
+      "a1_realization_span_MPa": 8.572667719739968,
+      "paired_a1p5_minus_a1_contrasts_MPa": [
+        -0.6180406859600112,
+        -3.4703919102900045,
+        1.0276046180599678
+      ],
+      "paired_contrasts_same_sign": false,
+      "minimum_absolute_paired_effect_MPa": 0.6180406859600112
+    }
+  },
+  "scientific_gate": {
+    "predeclared_rule": "Enter 3-variable BO only if at least one macroscopic target has a reproducible paired morphology effect clearly above mesh/time error.",
+    "by_property": {
+      "proof_stress_MPa": {
+        "criterion": "five-level range > 2*numerical envelope AND all paired a=1.5-a=1 contrasts have one sign AND minimum paired effect > 2*numerical envelope",
+        "passes": false
+      },
+      "flow_stress_2pct_MPa": {
+        "criterion": "five-level range > 2*numerical envelope AND all paired a=1.5-a=1 contrasts have one sign AND minimum paired effect > 2*numerical envelope",
+        "passes": false
+      }
+    },
+    "enter_three_variable_bo": false,
+    "decision": "do not execute three-variable BO; morphology is not a resolved additional macroscopic design variable"
+  },
+  "all_checks_passed": true,
+  "wall_time_s": 1418.2967058310169
+}
