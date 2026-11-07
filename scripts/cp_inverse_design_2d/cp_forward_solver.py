@@ -106,22 +106,35 @@ def run_forward(
     run_root: Path | None = None,
     reuse_cache: bool = True,
     mpi_ranks: int = 8,
+    mesh_path: Path | None = None,
+    mesh_manifest_path: Path | None = None,
+    tessellation_path: Path | None = None,
+    configuration_extra: dict[str, object] | None = None,
 ) -> dict[str, object]:
     if not 0.0 <= eta <= 1.0:
         raise ValueError("eta must lie in [0,1]")
     if not -180.0 <= theta_deg <= 180.0:
         raise ValueError("theta must lie in [-180,180] degrees")
-    if mesh_name not in MESH_FILES:
+    if mesh_path is None and mesh_name not in MESH_FILES:
         raise ValueError(f"Unknown mesh: {mesh_name}")
     if mpi_ranks <= 0:
         raise ValueError("mpi_ranks must be positive")
     if not EXECUTABLE.exists():
         raise FileNotFoundError(f"Build the application first: {EXECUTABLE}")
-    if not MESH_FILES[mesh_name].exists():
+    selected_mesh = Path(mesh_path) if mesh_path is not None else MESH_FILES[mesh_name]
+    if not selected_mesh.exists():
         raise FileNotFoundError("Generate the Neper meshes before running FEM")
     ensure_directories()
     configuration = simulation_configuration(
-        eta, theta_deg, mesh_name, protocol, mpi_ranks
+        eta,
+        theta_deg,
+        mesh_name,
+        protocol,
+        mpi_ranks,
+        mesh_path=selected_mesh,
+        mesh_manifest_path=mesh_manifest_path,
+        tessellation_path=tessellation_path,
+        configuration_extra=configuration_extra,
     )
     cache_key = canonical_hash(configuration)
     label = label or f"{design_tag(eta, theta_deg)}_{mesh_name}_{protocol.name}"
@@ -166,7 +179,7 @@ def run_forward(
         str(case),
         "Mesh/inactive=grains",
         "Mesh/base/type=FileMeshGenerator",
-        f"Mesh/base/file={MESH_FILES[mesh_name]}",
+        f"Mesh/base/file={selected_mesh}",
         "Mesh/pin/input=base",
         "Mesh/pin/coord='100 100 0'",
         "Mesh/pin/use_closest_node=true",
@@ -238,6 +251,7 @@ def run_forward(
         "eta": float(eta),
         "theta_deg": float(theta_deg),
         "mesh_name": mesh_name,
+        "mesh_path": str(selected_mesh),
         "mpi_ranks": int(mpi_ranks),
         "protocol": protocol.name,
         "label": label,

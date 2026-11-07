@@ -61,7 +61,9 @@ def _triangle_quality(points: np.ndarray) -> tuple[float, float, float]:
     return area, quality, aspect
 
 
-def validate_mesh(path: Path) -> dict[str, object]:
+def validate_mesh(
+    path: Path, *, minimum_quality_threshold: float = 0.10
+) -> dict[str, object]:
     nodes, elements = read_msh(path)
     triangles = [element for element in elements if element["type"] == 9]
     boundaries = [element for element in elements if element["type"] == 8]
@@ -140,7 +142,8 @@ def validate_mesh(path: Path) -> dict[str, object]:
         # The fixed seed-2026 Voronoi geometry contains one acute internal grain vertex.  Both
         # cut-origin studies and independent remeshing retain a quality of about 0.101 there;
         # rejecting below 0.20 would silently change the prescribed grain geometry.
-        "acceptable_minimum_quality": min(qualities, default=0.0) > 0.10,
+        "acceptable_minimum_quality": min(qualities, default=0.0)
+        > minimum_quality_threshold,
     }
     metrics: dict[str, object] = {
         "mesh": str(path),
@@ -159,6 +162,8 @@ def validate_mesh(path: Path) -> dict[str, object]:
         "minimum_triangle_quality": min(qualities),
         "mean_triangle_quality": float(np.mean(qualities)),
         "maximum_aspect_ratio": max(aspects),
+        "minimum_quality_threshold": minimum_quality_threshold,
+        "meets_original_reference_quality": min(qualities, default=0.0) > 0.10,
         "boundary_edge_count": boundary_edge_count,
         "shared_grain_boundary_edge_count": shared_grain_edges,
         "nonmanifold_edge_count": nonmanifold_edges,

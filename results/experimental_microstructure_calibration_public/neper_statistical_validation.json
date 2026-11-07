@@ -1,0 +1,846 @@
+{
+  "Al1_oBD": {
+    "dataset": "Al1_oBD",
+    "side_length_um": 400.0,
+    "grain_count": 298,
+    "recommended_rve_side_length_um": 400.0,
+    "optimizer": "staged deterministic candidate matrix and copula probes",
+    "optimizer_success": true,
+    "optimizer_message": "Reviewed final parameters validated on five disjoint seeds",
+    "evaluation_count": 4,
+    "calibration_seeds": [
+      7301
+    ],
+    "validation_seeds_not_used_in_fit": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "direction_target_used": false,
+    "morphology_time_limit_s": 60.0,
+    "best_parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.25660608,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "best_calibration_objective": 0.14578113003708787,
+    "validation": [
+      {
+        "seed": 8301,
+        "objective": 0.14321845737268102,
+        "normalized_components": {
+          "diameter": 0.11406357826124569,
+          "aspect": 0.18686933435703512,
+          "direction": 0.889261744966443,
+          "correlation": 0.04831757995590739,
+          "odf": 0.23613046486937397,
+          "size_orientation": 0.02330332405023112
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.11839167898987601,
+          "aspect_ratio_ks": 0.1551160277556592,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.084435973843619,
+          "experimental_count": 1888,
+          "synthetic_count": 298,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.23613046486937397
+        }
+      },
+      {
+        "seed": 8302,
+        "objective": 0.16187931709794243,
+        "normalized_components": {
+          "diameter": 0.1346033020732569,
+          "aspect": 0.22610705713989634,
+          "direction": 0.912751677852349,
+          "correlation": 0.06753536894317405,
+          "odf": 0.2401852747127744,
+          "size_orientation": 0.025707899988510002
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.10315948128768059,
+          "aspect_ratio_ks": 0.18542401319531338,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.12287155181815233,
+          "experimental_count": 1888,
+          "synthetic_count": 298,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.2401852747127744
+        }
+      },
+      {
+        "seed": 8303,
+        "objective": 0.1512115094593133,
+        "normalized_components": {
+          "diameter": 0.1366964502760056,
+          "aspect": 0.19205583366393775,
+          "direction": 0.8959731543624162,
+          "correlation": 0.06060040461106936,
+          "odf": 0.22953636294695332,
+          "size_orientation": 0.032514377289643695
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.12247966670458424,
+          "aspect_ratio_ks": 0.15159680354908428,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.10900162315394295,
+          "experimental_count": 1888,
+          "synthetic_count": 298,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.22953636294695332
+        }
+      },
+      {
+        "seed": 8304,
+        "objective": 0.1318533593940142,
+        "normalized_components": {
+          "diameter": 0.09754962389997451,
+          "aspect": 0.14191502464902891,
+          "direction": 0.848993288590604,
+          "correlation": 0.0637911638566871,
+          "odf": 0.24211670079247716,
+          "size_orientation": 0.02787301261246533
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.09795174041633489,
+          "aspect_ratio_ks": 0.0991283699237857,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.1153831416451784,
+          "experimental_count": 1888,
+          "synthetic_count": 298,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.24211670079247716
+        }
+      },
+      {
+        "seed": 8305,
+        "objective": 0.14074300686148833,
+        "normalized_components": {
+          "diameter": 0.1513346296774396,
+          "aspect": 0.13660897449697262,
+          "direction": 0.9161073825503356,
+          "correlation": 0.0356728955866826,
+          "odf": 0.24548662457816706,
+          "size_orientation": 0.02341070180006552
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.13129194630872484,
+          "aspect_ratio_ks": 0.11363539415311114,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.059146605105169434,
+          "experimental_count": 1888,
+          "synthetic_count": 298,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.24548662457816706
+        }
+      }
+    ],
+    "validation_objective_mean": 0.14578113003708787,
+    "validation_objective_standard_deviation": 0.010144687464077642,
+    "validation_objective_maximum": 0.16187931709794243,
+    "component_means": {
+      "diameter": 0.12684951683758444,
+      "aspect": 0.17671124486137416,
+      "correlation": 0.05518348259070409,
+      "odf": 0.2386910855799492,
+      "size_orientation": 0.026561863148183134
+    },
+    "experimental_size_ar_spearman": 0.01219918606819577,
+    "synthetic_size_ar_spearman_mean": -0.09816777911321244,
+    "synthetic_size_ar_spearman_standard_deviation": 0.02338902206844582,
+    "synthetic_size_ar_spearman_range": [
+      -0.12287155181815233,
+      -0.059146605105169434
+    ],
+    "experimental_mean_ecd_um": 17.82403278497247,
+    "synthetic_mean_ecd_um": 19.264471390772094,
+    "experimental_mean_aspect_ratio": 2.6723112340636686,
+    "synthetic_mean_aspect_ratio": 2.200607589628076,
+    "successful_realizations": 5,
+    "failed_realizations": 0
+  },
+  "Al1_pBD": {
+    "dataset": "Al1_pBD",
+    "side_length_um": 400.0,
+    "grain_count": 152,
+    "recommended_rve_side_length_um": 400.0,
+    "optimizer": "staged deterministic candidate matrix and copula probes",
+    "optimizer_success": true,
+    "optimizer_message": "Reviewed final parameters validated on five disjoint seeds",
+    "evaluation_count": 4,
+    "calibration_seeds": [
+      7301
+    ],
+    "validation_seeds_not_used_in_fit": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "direction_target_used": false,
+    "morphology_time_limit_s": 60.0,
+    "best_parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.45,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "best_calibration_objective": 0.16922859597322998,
+    "validation": [
+      {
+        "seed": 8301,
+        "objective": 0.15218253891944727,
+        "normalized_components": {
+          "diameter": 0.14247550787963073,
+          "aspect": 0.07874021670925005,
+          "direction": 0.9999999999999999,
+          "correlation": 0.08388226344513508,
+          "odf": 0.3271636983201554,
+          "size_orientation": 0.03681920209237071
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.10105023560418497,
+          "aspect_ratio_ks": 0.11257088092005431,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": 0.09394200343085997,
+          "experimental_count": 659,
+          "synthetic_count": 152,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.3271636983201554
+        }
+      },
+      {
+        "seed": 8302,
+        "objective": 0.17252559788415645,
+        "normalized_components": {
+          "diameter": 0.19879274988150822,
+          "aspect": 0.07496806470486667,
+          "direction": 0.9999999999999999,
+          "correlation": 0.14854577262712784,
+          "odf": 0.3248010009850118,
+          "size_orientation": 0.03453537930335037
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.14240076671192398,
+          "aspect_ratio_ks": 0.07963621116524239,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": -0.03538501493312556,
+          "experimental_count": 659,
+          "synthetic_count": 152,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.3248010009850118
+        }
+      },
+      {
+        "seed": 8303,
+        "objective": 0.1727790887418786,
+        "normalized_components": {
+          "diameter": 0.2116305442196952,
+          "aspect": 0.08445074747700036,
+          "direction": 0.9868421052631577,
+          "correlation": 0.1043717419134133,
+          "odf": 0.3200789340574502,
+          "size_orientation": 0.04554051651332416
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.13185847775736761,
+          "aspect_ratio_ks": 0.07276775017969811,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": 0.052963046494303535,
+          "experimental_count": 659,
+          "synthetic_count": 152,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.3200789340574502
+        }
+      },
+      {
+        "seed": 8304,
+        "objective": 0.1797483465492068,
+        "normalized_components": {
+          "diameter": 0.18590738895269757,
+          "aspect": 0.1206827643281483,
+          "direction": 0.993421052631579,
+          "correlation": 0.11445245596968759,
+          "odf": 0.33490735564252055,
+          "size_orientation": 0.0405392985772339
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.15514934909352288,
+          "aspect_ratio_ks": 0.069243670633336,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": 0.03280161838175493,
+          "experimental_count": 659,
+          "synthetic_count": 152,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.33490735564252055
+        }
+      },
+      {
+        "seed": 8305,
+        "objective": 0.16890740777146074,
+        "normalized_components": {
+          "diameter": 0.1826607570087364,
+          "aspect": 0.074787761005711,
+          "direction": 1.0,
+          "correlation": 0.10753435237411901,
+          "odf": 0.344022042967814,
+          "size_orientation": 0.04078378783304396
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.15061696350131779,
+          "aspect_ratio_ks": 0.1004712083699385,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": 0.046637825572892096,
+          "experimental_count": 659,
+          "synthetic_count": 152,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.344022042967814
+        }
+      }
+    ],
+    "validation_objective_mean": 0.16922859597322998,
+    "validation_objective_standard_deviation": 0.009217511547304016,
+    "validation_objective_maximum": 0.1797483465492068,
+    "component_means": {
+      "diameter": 0.18429338958845362,
+      "aspect": 0.08672591084499527,
+      "correlation": 0.11175731726589658,
+      "odf": 0.3301946063945904,
+      "size_orientation": 0.039643636863864615
+    },
+    "experimental_size_ar_spearman": 0.2617065303211301,
+    "synthetic_size_ar_spearman_mean": 0.038191895789336995,
+    "synthetic_size_ar_spearman_standard_deviation": 0.04204809628768201,
+    "synthetic_size_ar_spearman_range": [
+      -0.03538501493312556,
+      0.09394200343085997
+    ],
+    "experimental_mean_ecd_um": 22.17642970716223,
+    "synthetic_mean_ecd_um": 24.81725652720084,
+    "experimental_mean_aspect_ratio": 4.513690048539633,
+    "synthetic_mean_aspect_ratio": 4.507342765701143,
+    "successful_realizations": 5,
+    "failed_realizations": 0
+  },
+  "Al0_00": {
+    "dataset": "Al0_00",
+    "side_length_um": 400.0,
+    "grain_count": 496,
+    "recommended_rve_side_length_um": 400.0,
+    "optimizer": "staged deterministic candidate matrix and copula probes",
+    "optimizer_success": true,
+    "optimizer_message": "Reviewed final parameters validated on five disjoint seeds",
+    "evaluation_count": 4,
+    "calibration_seeds": [
+      7301
+    ],
+    "validation_seeds_not_used_in_fit": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "direction_target_used": false,
+    "morphology_time_limit_s": 60.0,
+    "best_parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.26,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "best_calibration_objective": 0.1417536832105707,
+    "validation": [
+      {
+        "seed": 8301,
+        "objective": 0.14240947687264596,
+        "normalized_components": {
+          "diameter": 0.12470168026653178,
+          "aspect": 0.21450725224001221,
+          "direction": 0.9012096774193549,
+          "correlation": 0.0977805253953655,
+          "odf": 0.17408838668986074,
+          "size_orientation": 0.014900651192992753
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.10513626514481032,
+          "aspect_ratio_ks": 0.1825083162938322,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.14106407752477718,
+          "experimental_count": 2114,
+          "synthetic_count": 496,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.17408838668986074
+        }
+      },
+      {
+        "seed": 8302,
+        "objective": 0.14381748016487286,
+        "normalized_components": {
+          "diameter": 0.1227258033616719,
+          "aspect": 0.20610301691790037,
+          "direction": 0.8951612903225806,
+          "correlation": 0.11450875400455732,
+          "odf": 0.18095568712424084,
+          "size_orientation": 0.01646207250679935
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.11320078127384259,
+          "aspect_ratio_ks": 0.17457350383007295,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.17452053474316084,
+          "experimental_count": 2114,
+          "synthetic_count": 496,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.18095568712424084
+        }
+      },
+      {
+        "seed": 8303,
+        "objective": 0.14259166478441174,
+        "normalized_components": {
+          "diameter": 0.11588804115259137,
+          "aspect": 0.22130186068154192,
+          "direction": 0.8991935483870969,
+          "correlation": 0.08594779883069892,
+          "odf": 0.18136450799076306,
+          "size_orientation": 0.017676699794802374
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.11119418927579577,
+          "aspect_ratio_ks": 0.2010254219183935,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.11739862439544402,
+          "experimental_count": 2114,
+          "synthetic_count": 496,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.18136450799076306
+        }
+      },
+      {
+        "seed": 8304,
+        "objective": 0.14340764036416176,
+        "normalized_components": {
+          "diameter": 0.16267990245657699,
+          "aspect": 0.17380154482207016,
+          "direction": 0.9153225806451613,
+          "correlation": 0.10044357111838395,
+          "odf": 0.17874373098951182,
+          "size_orientation": 0.016367195258592232
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.13668095950193793,
+          "aspect_ratio_ks": 0.16535882137516403,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.1463901689708141,
+          "experimental_count": 2114,
+          "synthetic_count": 496,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.17874373098951182
+        }
+      },
+      {
+        "seed": 8305,
+        "objective": 0.13654215386676113,
+        "normalized_components": {
+          "diameter": 0.12232689071156524,
+          "aspect": 0.19269243528386537,
+          "direction": 0.8770161290322579,
+          "correlation": 0.1057250645757066,
+          "odf": 0.17235836868394014,
+          "size_orientation": 0.01185677699964105
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.12684064760277108,
+          "aspect_ratio_ks": 0.17271378215887936,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.15695315588545938,
+          "experimental_count": 2114,
+          "synthetic_count": 496,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.17235836868394014
+        }
+      }
+    ],
+    "validation_objective_mean": 0.1417536832105707,
+    "validation_objective_standard_deviation": 0.002656582341325232,
+    "validation_objective_maximum": 0.14381748016487286,
+    "component_means": {
+      "diameter": 0.12966446358978745,
+      "aspect": 0.201681221989078,
+      "correlation": 0.10088114278494247,
+      "odf": 0.1775021362956633,
+      "size_orientation": 0.015452679150565552
+    },
+    "experimental_size_ar_spearman": 0.054496973265953805,
+    "synthetic_size_ar_spearman_mean": -0.14726531230393108,
+    "synthetic_size_ar_spearman_standard_deviation": 0.01880394479216905,
+    "synthetic_size_ar_spearman_range": [
+      -0.17452053474316084,
+      -0.11739862439544402
+    ],
+    "experimental_mean_ecd_um": 14.673570694702304,
+    "synthetic_mean_ecd_um": 15.83880490392411,
+    "experimental_mean_aspect_ratio": 2.6484690132473228,
+    "synthetic_mean_aspect_ratio": 2.114486800568176,
+    "successful_realizations": 5,
+    "failed_realizations": 0
+  },
+  "Al0_90": {
+    "dataset": "Al0_90",
+    "side_length_um": 400.0,
+    "grain_count": 219,
+    "recommended_rve_side_length_um": 400.0,
+    "optimizer": "staged deterministic candidate matrix and copula probes",
+    "optimizer_success": true,
+    "optimizer_message": "Reviewed final parameters validated on five disjoint seeds",
+    "evaluation_count": 4,
+    "calibration_seeds": [
+      7301
+    ],
+    "validation_seeds_not_used_in_fit": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "direction_target_used": false,
+    "morphology_time_limit_s": 60.0,
+    "best_parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.25,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "best_calibration_objective": 0.15512119273613506,
+    "validation": [
+      {
+        "seed": 8301,
+        "objective": 0.15257745201445727,
+        "normalized_components": {
+          "diameter": 0.1739983671154747,
+          "aspect": 0.06205919091611845,
+          "direction": 0.9863013698630138,
+          "correlation": 0.056789854414718226,
+          "odf": 0.3328319193458887,
+          "size_orientation": 0.02605080694597627
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.14100764154916864,
+          "aspect_ratio_ks": 0.060350187528831305,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": 0.04295360288825163,
+          "experimental_count": 1366,
+          "synthetic_count": 219,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.3328319193458887
+        }
+      },
+      {
+        "seed": 8302,
+        "objective": 0.15732105301041285,
+        "normalized_components": {
+          "diameter": 0.14624486794329047,
+          "aspect": 0.1299739029619721,
+          "direction": 0.9817351598173516,
+          "correlation": 0.05878066867774563,
+          "odf": 0.31302049557530004,
+          "size_orientation": 0.02130922244443198
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.1161542215714983,
+          "aspect_ratio_ks": 0.09448310903414295,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": 0.038971974362196814,
+          "experimental_count": 1366,
+          "synthetic_count": 219,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.31302049557530004
+        }
+      },
+      {
+        "seed": 8303,
+        "objective": 0.15189229333872822,
+        "normalized_components": {
+          "diameter": 0.1768636839157911,
+          "aspect": 0.06928897288481489,
+          "direction": 0.9999999999999999,
+          "correlation": 0.10243405563262814,
+          "odf": 0.30082833590725844,
+          "size_orientation": 0.01874230566146869
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.12359186238525977,
+          "aspect_ratio_ks": 0.08210486906409407,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": -0.04833479954756818,
+          "experimental_count": 1366,
+          "synthetic_count": 219,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.30082833590725844
+        }
+      },
+      {
+        "seed": 8304,
+        "objective": 0.17687285263694558,
+        "normalized_components": {
+          "diameter": 0.17785346595555038,
+          "aspect": 0.15126124957407908,
+          "direction": 0.9817351598173516,
+          "correlation": 0.11759909042189316,
+          "odf": 0.30866153664444845,
+          "size_orientation": 0.021831226325515724
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.14352473976614052,
+          "aspect_ratio_ks": 0.14261885182882394,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": -0.07866486912609824,
+          "experimental_count": 1366,
+          "synthetic_count": 219,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.30866153664444845
+        }
+      },
+      {
+        "seed": 8305,
+        "objective": 0.13694231268013143,
+        "normalized_components": {
+          "diameter": 0.13144949438704942,
+          "aspect": 0.08429329833932318,
+          "direction": 0.9954337899543378,
+          "correlation": 0.05139951771861302,
+          "odf": 0.2951489868094694,
+          "size_orientation": 0.022355424650754463
+        },
+        "weights": {
+          "diameter": 1.0,
+          "aspect": 1.0,
+          "direction": 0.0,
+          "correlation": 0.5,
+          "odf": 1.0,
+          "size_orientation": 0.5
+        },
+        "direction_target_used": false,
+        "diagnostics": {
+          "diameter_ks": 0.11200919927528966,
+          "aspect_ratio_ks": 0.06347566805056927,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": 0.05373427628046203,
+          "experimental_count": 1366,
+          "synthetic_count": 219,
+          "phase_fraction_total_variation": 0.0,
+          "phase_0_odf_total_variation": 0.2951489868094694
+        }
+      }
+    ],
+    "validation_objective_mean": 0.15512119273613506,
+    "validation_objective_standard_deviation": 0.012847896185252559,
+    "validation_objective_maximum": 0.17687285263694558,
+    "component_means": {
+      "diameter": 0.16128197586343124,
+      "aspect": 0.09937532293526155,
+      "correlation": 0.07740063737311963,
+      "odf": 0.310098254856473,
+      "size_orientation": 0.022057797205629424
+    },
+    "experimental_size_ar_spearman": 0.15653331171768808,
+    "synthetic_size_ar_spearman_mean": 0.0017320369714488096,
+    "synthetic_size_ar_spearman_standard_deviation": 0.05433344081821397,
+    "synthetic_size_ar_spearman_range": [
+      -0.07866486912609824,
+      0.05373427628046203
+    ],
+    "experimental_mean_ecd_um": 19.603591683067485,
+    "synthetic_mean_ecd_um": 21.658841604196887,
+    "experimental_mean_aspect_ratio": 4.155235624793267,
+    "synthetic_mean_aspect_ratio": 3.9161107018582233,
+    "successful_realizations": 5,
+    "failed_realizations": 0
+  }
+}

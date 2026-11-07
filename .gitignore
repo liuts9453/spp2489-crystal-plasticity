@@ -188,6 +188,17 @@ moose/include/base/Precompiled.h.gch
 
 framework/contrib/exodiff/exodiff
 
+# Private EBSD sources and all derived experimental calibration artifacts.
+# These may be published only after an explicit data-sharing review.
+results/experimental_microstructure_calibration/
+# Aggregate-only, privacy-reviewed export generated from the directory above.
+!results/experimental_microstructure_calibration_public/
+!results/experimental_microstructure_calibration_public/**
+Al1_oBD.csv
+Al1_pBD.csv
+GrainExtractionZ1_15_00_250x_B2_M1.csv
+GrainExtractionZ1_15_90_100x_B2_M1.csv
+
 # Mac garbage
 .DS_Store
 *.dSYM
@@ -217,6 +228,9 @@ peacock_*.e
 !/results/cp_inverse_design*/best_design.json
 !/results/cp_inverse_design*/cp_inverse_design_summary.json
 !/results/cp_inverse_design*/cp_inverse_design_2d_summary.json
+!/results/cp_inverse_design*/morphology_sensitivity.csv
+!/results/cp_inverse_design*/morphology_statistics.csv
+!/results/cp_inverse_design*/morphology_sensitivity_summary.json
 !/results/cp_inverse_design*/regression_checks.json
 !/results/cp_inverse_design*/time_integration_study.csv
 !/results/cp_inverse_design*/time_integration_study.json
@@ -233,6 +247,7 @@ peacock_*.e
 !/results/cp_inverse_design*/verification/
 /results/cp_inverse_design*/verification/**
 !/results/cp_inverse_design*/verification/verification_summary.json
+!/results/cp_inverse_design*/verification/homogeneous_control_summary.json
 !/results/cp_inverse_design*/presentation/
 /results/cp_inverse_design*/presentation/**
 !/results/cp_inverse_design*/presentation/*.png

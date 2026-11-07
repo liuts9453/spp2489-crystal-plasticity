@@ -1,0 +1,180 @@
+{
+  "Al1_oBD": {
+    "dataset": "Al1_oBD",
+    "phase": "all",
+    "validation_seeds": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.25660608,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "side_length_summaries": [
+      {
+        "side_length_um": 200.0,
+        "grain_count": 75,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.19849131372749312,
+        "objective_standard_deviation": 0.01100752233476572,
+        "objective_maximum": 0.2118679052938391,
+        "maximum_area_relative_error": 9.094947017729283e-16
+      },
+      {
+        "side_length_um": 400.0,
+        "grain_count": 298,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.14578113003708787,
+        "objective_standard_deviation": 0.010144687464077642,
+        "objective_maximum": 0.16187931709794243,
+        "maximum_area_relative_error": 9.094947017729283e-16
+      }
+    ],
+    "failed_tasks": [],
+    "recommendation": "400 \u03bcm periodic RVE"
+  },
+  "Al1_pBD": {
+    "dataset": "Al1_pBD",
+    "phase": "all",
+    "validation_seeds": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.45,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "side_length_summaries": [
+      {
+        "side_length_um": 200.0,
+        "grain_count": 38,
+        "successful_realizations": 4,
+        "failed_realizations": 1,
+        "objective_mean": 0.2860075944506971,
+        "objective_standard_deviation": 0.02136954126532703,
+        "objective_maximum": 0.31342002341051134,
+        "maximum_area_relative_error": 1.2732925824820995e-15
+      },
+      {
+        "side_length_um": 400.0,
+        "grain_count": 152,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.16922859597322998,
+        "objective_standard_deviation": 0.009217511547304016,
+        "objective_maximum": 0.1797483465492068,
+        "maximum_area_relative_error": 1.0913936421275138e-15
+      }
+    ],
+    "failed_tasks": [
+      {
+        "side_length_um": 200.0,
+        "seed": 8304,
+        "error": "Non-positive polygon central moment"
+      }
+    ],
+    "recommendation": "400 \u03bcm periodic RVE"
+  },
+  "Al0_00": {
+    "dataset": "Al0_00",
+    "phase": "all",
+    "validation_seeds": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.26,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "side_length_summaries": [
+      {
+        "side_length_um": 200.0,
+        "grain_count": 124,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.17395200632201166,
+        "objective_standard_deviation": 0.014719314562778115,
+        "objective_maximum": 0.1922403657010408,
+        "maximum_area_relative_error": 1.4551915228366853e-15
+      },
+      {
+        "side_length_um": 400.0,
+        "grain_count": 496,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.1417536832105707,
+        "objective_standard_deviation": 0.002656582341325232,
+        "objective_maximum": 0.14381748016487286,
+        "maximum_area_relative_error": 7.275957614183426e-16
+      }
+    ],
+    "failed_tasks": [],
+    "recommendation": "400 \u03bcm periodic RVE"
+  },
+  "Al0_90": {
+    "dataset": "Al0_90",
+    "phase": "all",
+    "validation_seeds": [
+      8301,
+      8302,
+      8303,
+      8304,
+      8305
+    ],
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.25,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "side_length_summaries": [
+      {
+        "side_length_um": 200.0,
+        "grain_count": 55,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.2267647147774563,
+        "objective_standard_deviation": 0.011890023545392467,
+        "objective_maximum": 0.24322372299529724,
+        "maximum_area_relative_error": 1.6370904631912708e-15
+      },
+      {
+        "side_length_um": 400.0,
+        "grain_count": 219,
+        "successful_realizations": 5,
+        "failed_realizations": 0,
+        "objective_mean": 0.15512119273613506,
+        "objective_standard_deviation": 0.012847896185252559,
+        "objective_maximum": 0.17687285263694558,
+        "maximum_area_relative_error": 7.275957614183426e-16
+      }
+    ],
+    "failed_tasks": [],
+    "recommendation": "400 \u03bcm periodic RVE"
+  }
+}

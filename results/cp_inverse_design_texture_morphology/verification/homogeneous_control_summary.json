@@ -1,0 +1,51 @@
+{
+  "definition": "All 20 grain blocks use the same crystal orientation and constitutive parameters; only the conforming morphology partition changes.",
+  "eta": 1.0,
+  "theta_deg": 4.242186925858952,
+  "levels": [
+    0.7,
+    1.0,
+    1.5
+  ],
+  "protocol": "adaptive_strict",
+  "mpi_ranks": 8,
+  "proof_stress_spread_MPa": 1.8474111129762605e-11,
+  "proof_stress_relative_spread": 4.572500253097188e-14,
+  "flow_stress_spread_MPa": 1.4999841368990019e-09,
+  "flow_stress_relative_spread": 3.156458531990347e-12,
+  "maximum_local_P11_range_MPa": 1.9084041014139075e-08,
+  "all_checks_passed": true,
+  "wall_time_s": 148.67841482401127,
+  "results": [
+    {
+      "input_a": 0.7,
+      "achieved_a": 0.7121541424476034,
+      "proof_stress_MPa": 404.02646489192057,
+      "flow_stress_2pct_MPa": 475.21110183934,
+      "local_P11_range_MPa": 8.982738108898047e-09,
+      "failed_attempts": 0,
+      "accepted_increments": 42,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/homogeneous_control_seed_2026_a_0p700000_eta_1.000000000_theta_+4.2421869_coarse_adaptive_strict_3cfc8f5970fc"
+    },
+    {
+      "input_a": 1.0,
+      "achieved_a": 1.034525517125434,
+      "proof_stress_MPa": 404.02646489192693,
+      "flow_stress_2pct_MPa": 475.21110183944,
+      "local_P11_range_MPa": 1.9084041014139075e-08,
+      "failed_attempts": 0,
+      "accepted_increments": 42,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/homogeneous_control_seed_2026_a_1p000000_eta_1.000000000_theta_+4.2421869_coarse_adaptive_strict_ce7bcd9f61a2"
+    },
+    {
+      "input_a": 1.5,
+      "achieved_a": 1.4320869126300346,
+      "proof_stress_MPa": 404.02646489190846,
+      "flow_stress_2pct_MPa": 475.21110184084,
+      "local_P11_range_MPa": 5.824347226734972e-09,
+      "failed_attempts": 0,
+      "accepted_increments": 42,
+      "run_directory": "/home/liu/projects/spp2489-cp-id/results/cp_inverse_design_texture_morphology/runs/homogeneous_control_seed_2026_a_1p500000_eta_1.000000000_theta_+4.2421869_coarse_adaptive_strict_5440cfb16265"
+    }
+  ]
+}

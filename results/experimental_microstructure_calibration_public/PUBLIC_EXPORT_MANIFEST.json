@@ -1,0 +1,8 @@
+{
+  "scope": "aggregate experimental statistics and synthetic Neper validation",
+  "raw_private_csv_included": false,
+  "cleaned_per_grain_tables_included": false,
+  "private_absolute_paths_included": false,
+  "synthetic_tessellations_with_sampled_experimental_orientations_included": false,
+  "file_count": 19
+}

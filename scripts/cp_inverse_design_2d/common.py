@@ -190,18 +190,31 @@ def simulation_configuration(
     mesh_name: str,
     protocol: TimeProtocol,
     mpi_ranks: int,
+    *,
+    mesh_path: Path | None = None,
+    mesh_manifest_path: Path | None = None,
+    tessellation_path: Path | None = None,
+    configuration_extra: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    if mesh_name not in MESH_FILES:
+    if mesh_path is None and mesh_name not in MESH_FILES:
         raise ValueError(f"Unknown mesh: {mesh_name}")
-    mesh = MESH_FILES[mesh_name]
+    mesh = Path(mesh_path) if mesh_path is not None else MESH_FILES[mesh_name]
+    manifest = (
+        Path(mesh_manifest_path)
+        if mesh_manifest_path is not None
+        else MESHES / f"{mesh_name}_mesh_metrics.json"
+    )
+    tessellation = (
+        Path(tessellation_path) if tessellation_path is not None else TESS_FILE
+    )
     protocol_data = asdict(protocol)
     protocol_data["sync_times"] = list(protocol.sync_times)
-    return {
+    configuration = {
         "eta": float(f"{eta:.15g}"),
         "theta_deg": float(f"{theta_deg:.15g}"),
         "mesh_name": mesh_name,
         "mesh_sha256": file_sha256(mesh),
-        "mesh_manifest_sha256": file_sha256(MESHES / f"{mesh_name}_mesh_metrics.json"),
+        "mesh_manifest_sha256": file_sha256(manifest),
         "mpi_ranks": int(mpi_ranks),
         "physical_end_time_s": 1.0,
         "maximum_F11": 1.02,
@@ -217,10 +230,13 @@ def simulation_configuration(
         "convergence": CONVERGENCE,
         "application_commit": git_commit(ROOT),
         "moose_commit": git_commit(Path("/home/liu/projects/moose")),
-        "tessellation_sha256": file_sha256(TESS_FILE),
+        "tessellation_sha256": file_sha256(tessellation),
         "random_orientation_sha256": file_sha256(RANDOM_MATERIALS),
         "slip_system_sha256": file_sha256(SLIP_SYSTEM_FILE),
     }
+    if configuration_extra:
+        configuration["extended_design"] = configuration_extra
+    return configuration
 
 
 def design_tag(eta: float, theta_deg: float) -> str:
