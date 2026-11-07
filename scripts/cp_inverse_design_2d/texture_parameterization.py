@@ -287,15 +287,44 @@ def _array(values: np.ndarray) -> str:
     return " ".join(f"{value:.15g}" for value in values)
 
 
-def write_cp_material_include(
-    path: Path, eta: float, theta_deg: float
+def write_cp_material_include_from_eulers(
+    path: Path,
+    eulers: np.ndarray,
+    *,
+    description: str,
+    include_grain_postprocessors: bool = False,
 ) -> dict[str, object]:
-    eulers, quaternions, metrics = orientations_for_design(eta, theta_deg)
+    """Write the verified FCC model for an arbitrary consecutive grain map."""
+    eulers = np.asarray(eulers, dtype=float)
+    if eulers.ndim != 2 or eulers.shape[1] != 3 or len(eulers) == 0:
+        raise ValueError("eulers must have shape (grain_count, 3)")
+    quaternions = []
+    maximum_orthogonality = 0.0
+    maximum_determinant = 0.0
+    for euler in eulers:
+        rotation = moose_bunge_rotation(*euler)
+        maximum_orthogonality = max(
+            maximum_orthogonality,
+            float(np.max(np.abs(rotation.T @ rotation - np.eye(3)))),
+        )
+        maximum_determinant = max(
+            maximum_determinant, abs(float(np.linalg.det(rotation)) - 1.0)
+        )
+        quaternions.append(rotation_to_quaternion(rotation))
+    quaternions = np.asarray(quaternions)
+    metrics: dict[str, object] = {
+        "grain_count": int(len(eulers)),
+        "maximum_orthogonality_error": maximum_orthogonality,
+        "maximum_determinant_error": maximum_determinant,
+        "complete_bunge_triplets_used": True,
+    }
+    if max(maximum_orthogonality, maximum_determinant) > 1.0e-10:
+        raise RuntimeError(f"Invalid SO(3) orientation table: {metrics}")
     elastic_constants = " ".join(
         f"{value:g}" for value in MATERIAL_PARAMETERS["C_ijkl_MPa"]
     )
     lines = [
-        f"# Generated 2D FCC CP texture: eta={eta:.17g}, theta={theta_deg:.17g} deg.",
+        f"# {description}",
         f"orientation_phi1 = '{_array(eulers[:, 0])}'",
         f"orientation_Phi = '{_array(eulers[:, 1])}'",
         f"orientation_phi2 = '{_array(eulers[:, 2])}'",
@@ -342,19 +371,21 @@ def write_cp_material_include(
                 "  []",
             ]
         )
-    lines.extend(["[]", "", "[Postprocessors]"])
-    for grain_id in range(1, 21):
-        lines.extend(
-            [
-                f"  [grain_{grain_id:02d}_slip]",
-                "    type = ElementAverageMaterialProperty",
-                "    mat_prop = accumulated_slip",
-                f"    block = {grain_id}",
-                "    execute_on = TIMESTEP_END",
-                "  []",
-            ]
-        )
     lines.extend(["[]", ""])
+    if include_grain_postprocessors:
+        lines.append("[Postprocessors]")
+        for grain_id in range(1, len(eulers) + 1):
+            lines.extend(
+                [
+                    f"  [grain_{grain_id:02d}_slip]",
+                    "    type = ElementAverageMaterialProperty",
+                    "    mat_prop = accumulated_slip",
+                    f"    block = {grain_id}",
+                    "    execute_on = TIMESTEP_END",
+                    "  []",
+                ]
+            )
+        lines.extend(["[]", ""])
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
     with path.with_name("orientations.csv").open(
@@ -368,20 +399,66 @@ def write_cp_material_include(
             zip(eulers, quaternions), start=1
         ):
             writer.writerow([grain_id, *euler, *quaternion])
-    validation = {**metrics, "parameterization": parameterization_validation()}
+    write_json(path.with_name("orientation_validation.json"), metrics)
+    return metrics
+
+
+def write_cp_material_include(
+    path: Path, eta: float, theta_deg: float
+) -> dict[str, object]:
+    eulers, _, metrics = orientations_for_design(eta, theta_deg)
+    generic = write_cp_material_include_from_eulers(
+        path,
+        eulers,
+        description=(
+            f"Generated 2D FCC CP texture: eta={eta:.17g}, "
+            f"theta={theta_deg:.17g} deg."
+        ),
+        include_grain_postprocessors=True,
+    )
+    validation = {
+        **generic,
+        **metrics,
+        "parameterization": parameterization_validation(),
+    }
     write_json(path.with_name("orientation_validation.json"), validation)
     return validation
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--eta", type=float, required=True)
-    parser.add_argument("--theta", type=float, required=True)
+    parser.add_argument("--eta", type=float)
+    parser.add_argument("--theta", type=float)
+    parser.add_argument(
+        "--euler-csv",
+        type=Path,
+        help="CSV with phi1_deg,Phi_deg,phi2_deg for an arbitrary grain map",
+    )
+    parser.add_argument(
+        "--description", default="Experimental EBSD sampled FCC texture"
+    )
+    parser.add_argument("--include-grain-postprocessors", action="store_true")
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
-    result = write_cp_material_include(
-        args.output_dir / "cp_materials.i", args.eta, args.theta
-    )
+    if args.euler_csv is not None:
+        with args.euler_csv.open(newline="", encoding="utf-8") as stream:
+            rows = list(csv.DictReader(stream))
+        eulers = np.asarray(
+            [[row["phi1_deg"], row["Phi_deg"], row["phi2_deg"]] for row in rows],
+            dtype=float,
+        )
+        result = write_cp_material_include_from_eulers(
+            args.output_dir / "cp_materials.i",
+            eulers,
+            description=args.description,
+            include_grain_postprocessors=args.include_grain_postprocessors,
+        )
+    else:
+        if args.eta is None or args.theta is None:
+            parser.error("supply either --euler-csv or both --eta and --theta")
+        result = write_cp_material_include(
+            args.output_dir / "cp_materials.i", args.eta, args.theta
+        )
     print(json.dumps(result, indent=2))
     return 0
 

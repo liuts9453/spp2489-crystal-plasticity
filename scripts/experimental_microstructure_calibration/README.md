@@ -56,3 +56,30 @@ python scripts/experimental_microstructure_calibration/export_public_results.py
 The exporter uses an explicit whitelist. It excludes raw/cleaned per-grain
 tables, private hashes and paths, and synthetic tessellations that contain
 sampled experimental orientations.
+
+## V2 joint calibration and mechanical sensitivity
+
+The v2 extension retains the historical result directory and writes all new
+private runs below `results/experimental_microstructure_calibration_v2/`.
+Geometry optimization uses a fixed Neper iteration count rather than a
+wall-clock stopping criterion, so results do not depend on concurrent machine
+load. Geometry objectives contain ECD, polygon AR, and size-conditioned AR
+terms; number- and area-weighted ODF errors are validated separately.
+
+```bash
+python scripts/experimental_microstructure_calibration/bootstrap_ebsd_statistics.py --help
+python scripts/experimental_microstructure_calibration/optimize_neper_joint_statistics.py --help
+python scripts/experimental_microstructure_calibration/confirm_fixed_iteration_validation.py
+python scripts/experimental_microstructure_calibration/build_mechanical_pilot.py --help
+python scripts/experimental_microstructure_calibration/finalize_calibration_v2.py
+python scripts/experimental_microstructure_calibration/write_calibration_v2_report.py
+python scripts/experimental_microstructure_calibration/export_public_v2_results.py
+```
+
+The mechanical pilot is deliberately separate from calibration. It converts a
+selected real periodic tessellation to a conforming TRI6 mesh, validates all
+periodic pairs and grain blocks, then invokes the existing A4 FCC-CP model.
+Invalid meshes or failed FEM solves are recorded and are never replaced by a
+synthetic property response. The public v2 exporter again uses a whitelist;
+raw EBSD rows, sampled orientations, tessellations, meshes, Exodus files, and
+absolute private paths are excluded.

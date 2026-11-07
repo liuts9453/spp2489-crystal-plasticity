@@ -6,6 +6,7 @@ from __future__ import annotations
 import inspect
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -25,6 +26,7 @@ from common import (
 )
 from extract_proof_stress import physical_history
 from generate_hidden_target import REFERENCE_ETA, REFERENCE_THETA_DEG
+from neper_to_moose import _signed_area, _smooth_shared_vertices
 from optimize_texture_2d import (
     denormalize_design,
     fit_objective_gp,
@@ -35,11 +37,54 @@ from texture_parameterization import (
     orientations_for_design,
     parameterization_validation,
     preferred_rotation,
+    write_cp_material_include_from_eulers,
 )
 from validate_periodic_mesh import validate_mesh
 
 
 class InverseDesign2DTests(unittest.TestCase):
+    def test_selective_geometry_smoothing_preserves_shared_topology_and_area(self):
+        coordinates = [(0.1, 0.02), (0.0, 0.0), (1.0, 0.0), (0.5, 1.0)]
+        polygons = [[1, 2, 3], [1, 3, 4], [1, 4, 2]]
+        original_area = sum(
+            _signed_area([coordinates[point - 1] for point in polygon])
+            for polygon in polygons
+        )
+        metrics = _smooth_shared_vertices(
+            coordinates,
+            polygons,
+            domain_size=1.0,
+            passes=20,
+            maximum_move_fraction=0.5,
+            activation_quality_threshold=0.2,
+        )
+        final_area = sum(
+            _signed_area([coordinates[point - 1] for point in polygon])
+            for polygon in polygons
+        )
+        self.assertGreater(metrics["accepted_vertex_moves"], 0)
+        self.assertGreater(coordinates[0][1], 0.02)
+        self.assertEqual(coordinates[1:], [(0.0, 0.0), (1.0, 0.0), (0.5, 1.0)])
+        self.assertAlmostEqual(original_area, final_area, places=12)
+        self.assertTrue(
+            all(
+                _signed_area([coordinates[point - 1] for point in polygon]) > 0.0
+                for polygon in polygons
+            )
+        )
+
+    def test_arbitrary_grain_orientation_include_uses_all_blocks(self) -> None:
+        eulers = np.asarray([[0.0, 0.0, 0.0], [37.0, 52.0, 11.0], [12.0, 84.0, 173.0]])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "cp_materials.i"
+            metrics = write_cp_material_include_from_eulers(
+                path, eulers, description="synthetic unit test"
+            )
+            text = path.read_text(encoding="utf-8")
+            self.assertEqual(metrics["grain_count"], 3)
+            self.assertIn("block = 3", text)
+            self.assertNotIn("grain_03_slip", text)
+
     def test_parameterization_endpoints_and_rotation_convention(self) -> None:
         result = parameterization_validation()
         self.assertTrue(result["all_checks_passed"])

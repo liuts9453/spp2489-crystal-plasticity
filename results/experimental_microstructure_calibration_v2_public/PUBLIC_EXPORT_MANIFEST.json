@@ -1,0 +1,8 @@
+{
+  "scope": "aggregate v2 EBSD\u2013Neper calibration and synthetic FCC-CP pilot",
+  "raw_or_cleaned_per_grain_experimental_tables_included": false,
+  "synthetic_tessellation_files_included": false,
+  "private_absolute_paths_included": false,
+  "figure_count": 10,
+  "safe_file_count": 9
+}

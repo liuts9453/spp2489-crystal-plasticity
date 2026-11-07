@@ -166,16 +166,21 @@ def _decode_names(array: np.ndarray) -> list[str]:
 
 
 def _periodic_error(
-    x_values: np.ndarray, y_values: np.ndarray, values: np.ndarray, axis: str
+    x_values: np.ndarray,
+    y_values: np.ndarray,
+    values: np.ndarray,
+    axis: str,
+    lower: float,
+    upper: float,
 ) -> tuple[int, int, float]:
     if axis == "x":
-        first = np.flatnonzero(np.isclose(x_values, 0.0, atol=1.0e-8))
-        second = np.flatnonzero(np.isclose(x_values, 200.0, atol=1.0e-8))
+        first = np.flatnonzero(np.isclose(x_values, lower, atol=1.0e-8))
+        second = np.flatnonzero(np.isclose(x_values, upper, atol=1.0e-8))
         first = first[np.argsort(y_values[first])]
         second = second[np.argsort(y_values[second])]
     else:
-        first = np.flatnonzero(np.isclose(y_values, 0.0, atol=1.0e-8))
-        second = np.flatnonzero(np.isclose(y_values, 200.0, atol=1.0e-8))
+        first = np.flatnonzero(np.isclose(y_values, lower, atol=1.0e-8))
+        second = np.flatnonzero(np.isclose(y_values, upper, atol=1.0e-8))
         first = first[np.argsort(x_values[first])]
         second = second[np.argsort(x_values[second])]
     if len(first) != len(second):
@@ -184,6 +189,19 @@ def _periodic_error(
         len(first),
         len(second),
         float(np.max(np.abs(values[second] - values[first]))),
+    )
+
+
+def _weighted_quantile(
+    values: np.ndarray, weights: np.ndarray, probability: float
+) -> float:
+    order = np.argsort(values)
+    sorted_values = values[order]
+    sorted_weights = weights[order]
+    cumulative = np.cumsum(sorted_weights)
+    threshold = probability * cumulative[-1]
+    return float(
+        sorted_values[min(np.searchsorted(cumulative, threshold), len(values) - 1)]
     )
 
 
@@ -223,13 +241,18 @@ def exodus_metrics(path: Path) -> dict[str, object]:
         nodal_names = _decode_names(database.variables["name_nod_var"].data)
         element_names = _decode_names(database.variables["name_elem_var"].data)
         periodic: list[dict[str, object]] = []
+        x_bounds = (float(x_values.min()), float(x_values.max()))
+        y_bounds = (float(y_values.min()), float(y_values.max()))
         for variable_name in ("disp_x", "disp_y"):
             index = nodal_names.index(variable_name) + 1
             values = np.asarray(
                 database.variables[f"vals_nod_var{index}"].data[-1]
             ).copy()
             for axis in ("x", "y"):
-                first, second, error = _periodic_error(x_values, y_values, values, axis)
+                bounds = x_bounds if axis == "x" else y_bounds
+                first, second, error = _periodic_error(
+                    x_values, y_values, values, axis, *bounds
+                )
                 periodic.append(
                     {
                         "variable": variable_name,
@@ -250,26 +273,49 @@ def exodus_metrics(path: Path) -> dict[str, object]:
         ):
             index = element_names.index(variable_name) + 1
             all_values: list[float] = []
+            all_weights: list[float] = []
             per_grain: dict[str, float] = {}
             for block_number, block_id in enumerate(block_ids, start=1):
                 variable = f"vals_elem_var{index}eb{block_number}"
                 if variable not in database.variables:
                     continue
                 values = np.asarray(database.variables[variable].data[-1]).copy()
+                connectivity = (
+                    np.asarray(database.variables[f"connect{block_number}"].data)
+                    .copy()
+                    .astype(int)
+                    - 1
+                )
+                corners = connectivity[:, :3]
+                x_corner = x_values[corners]
+                y_corner = y_values[corners]
+                weights = 0.5 * np.abs(
+                    (x_corner[:, 1] - x_corner[:, 0])
+                    * (y_corner[:, 2] - y_corner[:, 0])
+                    - (x_corner[:, 2] - x_corner[:, 0])
+                    * (y_corner[:, 1] - y_corner[:, 0])
+                )
+                if len(weights) != len(values) or np.any(weights <= 0.0):
+                    raise RuntimeError("Invalid TRI6 element areas in Exodus output")
                 all_values.extend(values.tolist())
+                all_weights.extend(weights.tolist())
                 per_grain[str(block_id)] = float(np.mean(values))
             array = np.asarray(all_values, dtype=float)
+            weight_array = np.asarray(all_weights, dtype=float)
             statistics[variable_name] = {
                 "minimum": float(array.min()),
                 "maximum": float(array.max()),
                 "mean": float(array.mean()),
                 "range": float(np.ptp(array)),
+                "volume_weighted_mean": float(np.average(array, weights=weight_array)),
+                "volume_weighted_q95": _weighted_quantile(array, weight_array, 0.95),
             }
             grain_means[variable_name] = per_grain
     return {
         "readable": True,
         "block_ids": block_ids,
         "node_count": len(x_values),
+        "domain_bounds_um": {"x": list(x_bounds), "y": list(y_bounds)},
         "periodic_pairs": periodic,
         "maximum_periodicity_error": max(item["maximum_error"] for item in periodic),
         "missing_required_fields": sorted(
@@ -281,7 +327,9 @@ def exodus_metrics(path: Path) -> dict[str, object]:
     }
 
 
-def extract_properties(csv_path: Path, exodus_path: Path) -> dict[str, object]:
+def extract_properties(
+    csv_path: Path, exodus_path: Path, expected_grain_count: int = 20
+) -> dict[str, object]:
     rows = physical_history(read_history(csv_path))
     one_percent = _exact_row(rows, 0.5)
     final = _exact_row(rows, 1.0)
@@ -375,6 +423,13 @@ def extract_properties(csv_path: Path, exodus_path: Path) -> dict[str, object]:
             "maximum_local_P11_MPa": local["P11"]["maximum"],
             "minimum_local_P11_MPa": local["P11"]["minimum"],
             "maximum_active_slip_systems": local["active_slip_systems"]["maximum"],
+            "volume_weighted_q95_accumulated_slip": local["accumulated_slip"][
+                "volume_weighted_q95"
+            ],
+            "accumulated_slip_q95_definition": (
+                "element-area-weighted quantile of the Exodus elemental "
+                "MaterialRealAux field; this is not a raw quadrature-point sample"
+            ),
         }
     )
     checks = {
@@ -396,7 +451,8 @@ def extract_properties(csv_path: Path, exodus_path: Path) -> dict[str, object]:
         >= -1.0e-10,
         "hill_mandel": result["hill_mandel_relative_residual_max"] < 5.0e-4,
         "periodic_BCs": exodus["maximum_periodicity_error"] < 1.0e-8,
-        "twenty_grain_blocks": exodus["block_ids"] == list(range(1, 21)),
+        "expected_grain_blocks": exodus["block_ids"]
+        == list(range(1, expected_grain_count + 1)),
         "required_exodus_fields": not exodus["missing_required_fields"],
     }
     result["checks"] = checks
@@ -410,8 +466,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv", type=Path)
     parser.add_argument("exodus", type=Path)
+    parser.add_argument("--expected-grains", type=int, default=20)
     args = parser.parse_args()
-    print(json.dumps(extract_properties(args.csv, args.exodus), indent=2))
+    print(
+        json.dumps(
+            extract_properties(args.csv, args.exodus, args.expected_grains), indent=2
+        )
+    )
     return 0
 
 

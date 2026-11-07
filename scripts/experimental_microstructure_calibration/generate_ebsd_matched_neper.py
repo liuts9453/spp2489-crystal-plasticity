@@ -304,6 +304,7 @@ def generate_rve(
     force: bool = False,
     generation_timeout_s: float | None = None,
     morphology_time_limit_s: float | None = None,
+    morphology_iteration_limit: int | None = None,
 ) -> dict[str, object]:
     parameters.validate()
     output_directory.mkdir(parents=True, exist_ok=True)
@@ -317,6 +318,13 @@ def generate_rve(
     count = grain_count or choose_grain_count(phase_frame, side_length_um)
     if morphology_time_limit_s is not None and morphology_time_limit_s <= 0.0:
         raise ValueError("morphology_time_limit_s must be positive when supplied")
+    if morphology_iteration_limit is not None and morphology_iteration_limit <= 0:
+        raise ValueError("morphology_iteration_limit must be positive when supplied")
+    if morphology_time_limit_s is not None and morphology_iteration_limit is not None:
+        raise ValueError(
+            "morphology_time_limit_s and morphology_iteration_limit are mutually "
+            "exclusive"
+        )
     cache_identity = {
         "dataset": dataset_key,
         "phase": str(phase),
@@ -326,6 +334,7 @@ def generate_rve(
         "parameters": asdict(parameters),
         "experimental_table_sha256": _experimental_table_hash(phase_frame),
         "morphology_time_limit_s": morphology_time_limit_s,
+        "morphology_iteration_limit": morphology_iteration_limit,
     }
     manifest_path = output_directory / "generation_manifest.json"
     previous_manifest = (
@@ -400,6 +409,13 @@ def generate_rve(
             [
                 "-morphooptistop",
                 f"time>{morphology_time_limit_s:.15g}||eps<1e-6||val<1e-12",
+            ]
+        )
+    elif morphology_iteration_limit is not None:
+        command.extend(
+            [
+                "-morphooptistop",
+                f"iter>={morphology_iteration_limit}||eps<1e-6||val<1e-12",
             ]
         )
     command.extend(["-crysym", "cubic", "-format", "tess", "-o", base])
@@ -488,6 +504,7 @@ def generate_rve(
             parameters.input_size_shape_rank_correlation
         ),
         "morphology_time_limit_s": morphology_time_limit_s,
+        "morphology_iteration_limit": morphology_iteration_limit,
     }
     write_json(manifest_path, manifest)
     return manifest
@@ -510,6 +527,7 @@ def main() -> int:
     parser.add_argument("--one-minus-circularity-std", type=float)
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--morphology-time-limit", type=float)
+    parser.add_argument("--morphology-iteration-limit", type=int)
     args = parser.parse_args()
     manifest = generate_rve(
         pd.read_csv(args.cleaned_csv),
@@ -529,6 +547,7 @@ def main() -> int:
         ),
         force=args.force,
         morphology_time_limit_s=args.morphology_time_limit,
+        morphology_iteration_limit=args.morphology_iteration_limit,
     )
     print(json.dumps(manifest, indent=2))
     return 0

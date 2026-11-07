@@ -1,0 +1,86 @@
+{
+  "baseline": {
+    "mesh_metrics": {
+      "node_count": 31783,
+      "element_count": 15738,
+      "quadrature_point_count_TRI6_default_fifth_order": 110166,
+      "domain_area_um2": 160000.0,
+      "minimum_triangle_quality": 0.10175956121542372,
+      "mean_triangle_quality": 0.9584346233145512,
+      "maximum_aspect_ratio": 17.2358728610808,
+      "maximum_periodic_coordinate_error_um": 8.282086128019728e-11,
+      "checks": {
+        "consecutive_grain_blocks": true,
+        "all_nodes_used": true,
+        "positive_elements": true,
+        "domain_area": true,
+        "four_boundary_sets": true,
+        "periodic_node_counts": true,
+        "periodic_coordinates": true,
+        "manifold": true,
+        "boundary_topology": true,
+        "shared_grain_boundaries": true,
+        "acceptable_minimum_quality": true
+      },
+      "all_checks_passed": true
+    },
+    "geometry_level_correction": {
+      "enabled": true,
+      "passes_requested": 30,
+      "accepted_vertex_moves": 153,
+      "maximum_vertex_displacement_um": 15.254480149094162,
+      "mean_vertex_displacement_um": 0.46424633877533245,
+      "maximum_move_fraction_per_pass": 0.5,
+      "corner_quality_activation_threshold": 0.012,
+      "domain_area_after_smoothing_um2": 160000.0,
+      "domain_area_error_um2": 0.0,
+      "grain_area_l1_change_fraction": 0.03217678832328968,
+      "grain_area_correlation_before_after": 0.9989853230863,
+      "maximum_absolute_grain_area_change_um2": 363.01720863072023,
+      "topology_changed": false,
+      "grain_ids_changed": false
+    }
+  },
+  "improved": {
+    "mesh_metrics": {
+      "node_count": 31823,
+      "element_count": 15756,
+      "quadrature_point_count_TRI6_default_fifth_order": 110292,
+      "domain_area_um2": 160000.0,
+      "minimum_triangle_quality": 0.12289985746584807,
+      "mean_triangle_quality": 0.9566122570381766,
+      "maximum_aspect_ratio": 14.3790606713116,
+      "maximum_periodic_coordinate_error_um": 3.220179678464774e-10,
+      "checks": {
+        "consecutive_grain_blocks": true,
+        "all_nodes_used": true,
+        "positive_elements": true,
+        "domain_area": true,
+        "four_boundary_sets": true,
+        "periodic_node_counts": true,
+        "periodic_coordinates": true,
+        "manifold": true,
+        "boundary_topology": true,
+        "shared_grain_boundaries": true,
+        "acceptable_minimum_quality": true
+      },
+      "all_checks_passed": true
+    },
+    "geometry_level_correction": {
+      "enabled": true,
+      "passes_requested": 30,
+      "accepted_vertex_moves": 130,
+      "maximum_vertex_displacement_um": 14.82836024065221,
+      "mean_vertex_displacement_um": 0.34612998593834915,
+      "maximum_move_fraction_per_pass": 0.5,
+      "corner_quality_activation_threshold": 0.012,
+      "domain_area_after_smoothing_um2": 160000.0,
+      "domain_area_error_um2": 0.0,
+      "grain_area_l1_change_fraction": 0.022486025466366556,
+      "grain_area_correlation_before_after": 0.9992119428866432,
+      "maximum_absolute_grain_area_change_um2": 403.24810295431735,
+      "topology_changed": false,
+      "grain_ids_changed": false
+    }
+  }
+}

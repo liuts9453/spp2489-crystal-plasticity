@@ -62,7 +62,11 @@ def _triangle_quality(points: np.ndarray) -> tuple[float, float, float]:
 
 
 def validate_mesh(
-    path: Path, *, minimum_quality_threshold: float = 0.10
+    path: Path,
+    *,
+    minimum_quality_threshold: float = 0.10,
+    expected_grain_count: int = 20,
+    domain_size_um: float = 200.0,
 ) -> dict[str, object]:
     nodes, elements = read_msh(path)
     triangles = [element for element in elements if element["type"] == 9]
@@ -126,10 +130,11 @@ def validate_mesh(
     nonmanifold_edges = sum(len(values) > 2 for values in edge_grains.values())
     shared_grain_edges = sum(len(set(values)) == 2 for values in edge_grains.values())
     checks = {
-        "twenty_grain_blocks": sorted(block_counts) == list(range(1, 21)),
+        "consecutive_grain_blocks": sorted(block_counts)
+        == list(range(1, expected_grain_count + 1)),
         "all_nodes_used": used_nodes == set(nodes),
         "positive_elements": min(areas, default=0.0) > 0.0,
-        "domain_area": abs(sum(areas) - 40000.0) < 1.0e-6,
+        "domain_area": abs(sum(areas) - domain_size_um**2) < 1.0e-6,
         "four_boundary_sets": set(boundary_elements) == {101, 102, 103, 104},
         "periodic_node_counts": all(
             first == second for first, second in periodic_counts.values()
@@ -147,16 +152,23 @@ def validate_mesh(
     }
     metrics: dict[str, object] = {
         "mesh": str(path),
+        "expected_grain_count": expected_grain_count,
+        "domain_size_um": domain_size_um,
         "node_count": len(nodes),
         "element_count": len(triangles),
         # MOOSE's default Galerkin rule is order 2*n+1.  SECOND-order displacement
         # variables therefore use a fifth-order triangular Gauss/Dunavant rule
         # with seven points per TRI6 element.
         "quadrature_point_count_TRI6_default_fifth_order": 7 * len(triangles),
-        "grain_element_counts": {str(key): block_counts[key] for key in range(1, 21)},
-        "grain_area_um2": {str(key): block_areas[key] for key in range(1, 21)},
+        "grain_element_counts": {
+            str(key): block_counts[key] for key in range(1, expected_grain_count + 1)
+        },
+        "grain_area_um2": {
+            str(key): block_areas[key] for key in range(1, expected_grain_count + 1)
+        },
         "grain_area_fraction": {
-            str(key): block_areas[key] / 40000.0 for key in range(1, 21)
+            str(key): block_areas[key] / domain_size_um**2
+            for key in range(1, expected_grain_count + 1)
         },
         "domain_area_um2": sum(areas),
         "minimum_triangle_quality": min(qualities),
@@ -181,8 +193,6 @@ def validate_mesh(
         "checks": checks,
         "all_checks_passed": all(checks.values()),
     }
-    if not metrics["all_checks_passed"]:
-        raise RuntimeError(f"Mesh validation failed for {path}: {checks}")
     return metrics
 
 
@@ -190,11 +200,23 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mesh", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--expected-grains", type=int, default=20)
+    parser.add_argument("--domain-size", type=float, default=200.0)
+    parser.add_argument("--minimum-quality", type=float, default=0.10)
     args = parser.parse_args()
-    result = validate_mesh(args.mesh)
+    result = validate_mesh(
+        args.mesh,
+        minimum_quality_threshold=args.minimum_quality,
+        expected_grain_count=args.expected_grains,
+        domain_size_um=args.domain_size,
+    )
     if args.output:
         write_json(args.output, result)
     print(json.dumps(result, indent=2))
+    if not result["all_checks_passed"]:
+        raise RuntimeError(
+            f"Mesh validation failed for {args.mesh}: {result['checks']}"
+        )
     return 0
 
 

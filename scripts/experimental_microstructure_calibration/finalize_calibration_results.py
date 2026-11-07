@@ -187,7 +187,14 @@ def finalize(results_root: Path = RESULTS_ROOT) -> dict[str, object]:
             "direction_target_used": False,
             "morphology_time_limit_s": 60.0,
             "best_parameters": parameters,
-            "best_calibration_objective": float(objective.mean()),
+            "calibration_objective_at_recorded_optimizer_selection": calibration[
+                "best_calibration_objective"
+            ],
+            "final_selected_parameter_provenance": (
+                "legacy reviewed post-processing selection from staged probes; "
+                "the v1 history is incomplete for all four coordinates"
+            ),
+            "final_selected_parameters": parameters,
             "validation": per_seed,
             "validation_objective_mean": float(objective.mean()),
             "validation_objective_standard_deviation": float(objective.std()),

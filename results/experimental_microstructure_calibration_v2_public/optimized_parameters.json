@@ -1,0 +1,749 @@
+{
+  "Al1_oBD": {
+    "dataset": "Al1_oBD",
+    "side_length_um": 400.0,
+    "grain_count": 298,
+    "search_method": "deterministic seeded Latin hypercube plus coordinate-local refinement",
+    "parameter_names": [
+      "diameter_log_spread_scale",
+      "directional_ratio_x_over_y",
+      "aspect_ratio_proxy_scale",
+      "input_size_shape_rank_correlation"
+    ],
+    "parameter_bounds": {
+      "diameter_log_spread_scale": [
+        0.6,
+        1.4
+      ],
+      "directional_ratio_x_over_y": [
+        1.0,
+        3.0
+      ],
+      "aspect_ratio_proxy_scale": [
+        0.5,
+        1.5
+      ],
+      "input_size_shape_rank_correlation": [
+        -1.0,
+        1.0
+      ]
+    },
+    "screening_latin_hypercube_candidates": 20,
+    "total_unique_candidate_count": 29,
+    "screening_seed": 9301,
+    "multi_seed_calibration_seeds": [
+      9301,
+      9302,
+      9303
+    ],
+    "independent_holdout_seeds_not_used_for_selection": [
+      10301,
+      10302,
+      10303,
+      10304,
+      10305
+    ],
+    "morphology_objective_weights": {
+      "ecd_wasserstein_normalized": 1.0,
+      "ar_wasserstein_normalized": 1.0,
+      "ecd_ks": 0.35,
+      "ar_ks": 0.35,
+      "mean_ecd_relative_error": 1.0,
+      "cv_ecd_relative_error": 0.5,
+      "mean_ar_relative_error": 1.0,
+      "ecd_q95_relative_error": 0.25,
+      "ecd_q99_relative_error": 0.15,
+      "ar_q95_relative_error": 0.25,
+      "size_ar_spearman_absolute_error": 0.75,
+      "size_conditioned_ar_error": 1.0
+    },
+    "odf_in_geometry_objective": false,
+    "selected_candidate_id": 22,
+    "selected_parameters": {
+      "diameter_log_spread_scale": 1.0476695663186293,
+      "directional_ratio_x_over_y": 1.7705556976644863,
+      "aspect_ratio_proxy_scale": 0.9339885827560688,
+      "input_size_shape_rank_correlation": 0.8419375762901811,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "selected_calibration_objective_mean": 0.0845591218766061,
+    "selected_calibration_objective_standard_deviation": 0.015283061015373219,
+    "selection_provenance": "minimum mean morphology objective among candidates that completed all three calibration seeds; holdout results were not used for selection",
+    "holdout_comparison": {
+      "baseline": {
+        "successful_realizations": 5,
+        "objective_mean": 0.17268012771403013,
+        "objective_standard_deviation": 0.011156087379457877,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.16309732631649645,
+          "ar_wasserstein_normalized": 0.19951903930893047,
+          "ecd_ks": 0.13746729609828234,
+          "ar_ks": 0.14466073256739848,
+          "mean_ecd_relative_error": 0.1037900910805695,
+          "cv_ecd_relative_error": 0.18209432740487333,
+          "mean_ar_relative_error": 0.1994065723118273,
+          "ecd_q95_relative_error": 0.07679733492510686,
+          "ecd_q99_relative_error": 0.12588089075136502,
+          "ar_q95_relative_error": 0.26899146819760467,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.15699356247941015,
+          "size_ar_spearman_absolute_error": 0.1691927485476059,
+          "size_conditioned_ar_error": 0.22454007206929325,
+          "odf_number_total_variation": 0.24778253327266522,
+          "odf_area_total_variation": 0.4346032835971524
+        },
+        "seeds": [
+          10301,
+          10302,
+          10303,
+          10304,
+          10305
+        ]
+      },
+      "improved": {
+        "successful_realizations": 5,
+        "objective_mean": 0.08934574569837632,
+        "objective_standard_deviation": 0.016103503527649752,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.09480870022260049,
+          "ar_wasserstein_normalized": 0.09194959355090135,
+          "ecd_ks": 0.06878981344556934,
+          "ar_ks": 0.09869824252075987,
+          "mean_ecd_relative_error": 0.05214154817404913,
+          "cv_ecd_relative_error": 0.09196732003432391,
+          "mean_ar_relative_error": 0.04290897470190946,
+          "ecd_q95_relative_error": 0.05230218597232261,
+          "ecd_q99_relative_error": 0.0834182789736347,
+          "ar_q95_relative_error": 0.08827550618734772,
+          "experimental_size_ar_spearman": 0.01219918606819577,
+          "synthetic_size_ar_spearman": -0.05797631995472672,
+          "size_ar_spearman_absolute_error": 0.09449336615073972,
+          "size_conditioned_ar_error": 0.17408718155380484,
+          "odf_number_total_variation": 0.24778253327266522,
+          "odf_area_total_variation": 0.45434792190668655
+        },
+        "seeds": [
+          10301,
+          10302,
+          10303,
+          10304,
+          10305
+        ]
+      }
+    },
+    "failed_run_count": 6,
+    "failed_runs": [
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 1,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 2,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 3,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 13,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 18,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "multi_seed_calibration",
+        "candidate_id": 28,
+        "seed": 9303,
+        "error": "Non-positive polygon central moment"
+      }
+    ],
+    "total_neper_wall_time_s": 2583.457492372545,
+    "history_file": "calibration_history.csv"
+  },
+  "Al1_pBD": {
+    "dataset": "Al1_pBD",
+    "reason": "The first selected candidate failed 2/5 initial holdouts; those seeds were retired from independent validation before this robust refinement.",
+    "candidate_points": {
+      "0": {
+        "diameter_log_spread_scale": 0.95,
+        "directional_ratio_x_over_y": 2.45,
+        "aspect_ratio_proxy_scale": 1.0,
+        "input_size_shape_rank_correlation": 1.0
+      },
+      "14": {
+        "diameter_log_spread_scale": 0.868373,
+        "directional_ratio_x_over_y": 2.992787,
+        "aspect_ratio_proxy_scale": 0.728813,
+        "input_size_shape_rank_correlation": 0.883449
+      },
+      "18": {
+        "diameter_log_spread_scale": 1.321932138635528,
+        "directional_ratio_x_over_y": 2.8865138595900857,
+        "aspect_ratio_proxy_scale": 0.5679521560683584,
+        "input_size_shape_rank_correlation": 0.9937825630779031
+      },
+      "20": {
+        "diameter_log_spread_scale": 1.195232,
+        "directional_ratio_x_over_y": 2.141397,
+        "aspect_ratio_proxy_scale": 0.815344,
+        "input_size_shape_rank_correlation": 0.269763
+      },
+      "100": {
+        "diameter_log_spread_scale": 1.2,
+        "directional_ratio_x_over_y": 2.6,
+        "aspect_ratio_proxy_scale": 0.8,
+        "input_size_shape_rank_correlation": 0.8
+      },
+      "101": {
+        "diameter_log_spread_scale": 1.2,
+        "directional_ratio_x_over_y": 2.45,
+        "aspect_ratio_proxy_scale": 0.9,
+        "input_size_shape_rank_correlation": 0.9
+      }
+    },
+    "robust_calibration_seeds": [
+      9401,
+      9402,
+      9403,
+      9404,
+      9405
+    ],
+    "second_holdout_seeds_not_used_for_selection": [
+      11301,
+      11302,
+      11303,
+      11304,
+      11305
+    ],
+    "selection_score": "mean objective + 0.25 * worst-seed objective",
+    "selected_candidate_id": 0,
+    "selected_parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.45,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "selected_robust_calibration_objective_mean": 0.16115931726248625,
+    "selected_robust_calibration_objective_maximum": 0.17290916752181307,
+    "independent_validation": {
+      "baseline": {
+        "successful_realizations": 5,
+        "objective_mean": 0.16199903073569727,
+        "objective_standard_deviation": 0.01950655207046238,
+        "objective_maximum": 0.1933272026705863,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.1965424664987451,
+          "ar_wasserstein_normalized": 0.10115485388141032,
+          "ecd_ks": 0.14798937784522004,
+          "ar_ks": 0.12066727897132816,
+          "mean_ecd_relative_error": 0.12799888813749552,
+          "cv_ecd_relative_error": 0.18319332130390334,
+          "mean_ar_relative_error": 0.07602332457444264,
+          "ecd_q95_relative_error": 0.06618345214097276,
+          "ecd_q99_relative_error": 0.1478586313987011,
+          "ar_q95_relative_error": 0.08466605787723612,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": -0.05390414095230285,
+          "size_ar_spearman_absolute_error": 0.31561067127343295,
+          "size_conditioned_ar_error": 0.24724743429202997,
+          "odf_number_total_variation": 0.3309679738040092,
+          "odf_area_total_variation": 0.5478037884340968
+        },
+        "seeds": [
+          11301,
+          11302,
+          11303,
+          11304,
+          11305
+        ]
+      },
+      "improved": {
+        "successful_realizations": 5,
+        "objective_mean": 0.15537984702158497,
+        "objective_standard_deviation": 0.015850333016302363,
+        "objective_maximum": 0.1763771808262973,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.17992271490988102,
+          "ar_wasserstein_normalized": 0.10376027716887781,
+          "ecd_ks": 0.13594561137289354,
+          "ar_ks": 0.12156976279849852,
+          "mean_ecd_relative_error": 0.11583960139496141,
+          "cv_ecd_relative_error": 0.16650560421950028,
+          "mean_ar_relative_error": 0.08132830331037019,
+          "ecd_q95_relative_error": 0.0786710440471917,
+          "ecd_q99_relative_error": 0.13109538262943451,
+          "ar_q95_relative_error": 0.057958180500601295,
+          "experimental_size_ar_spearman": 0.2617065303211301,
+          "synthetic_size_ar_spearman": -0.022825470376369433,
+          "size_ar_spearman_absolute_error": 0.28453200069749957,
+          "size_conditioned_ar_error": 0.25943214345572974,
+          "odf_number_total_variation": 0.3309679738040092,
+          "odf_area_total_variation": 0.5513046813071661
+        },
+        "seeds": [
+          11301,
+          11302,
+          11303,
+          11304,
+          11305
+        ]
+      }
+    },
+    "failed_run_count": 7,
+    "failed_runs": [
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 20,
+        "seed": 9405,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 100,
+        "seed": 9401,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 100,
+        "seed": 9403,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 100,
+        "seed": 9404,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 101,
+        "seed": 9402,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 101,
+        "seed": 9403,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "stage": "robust_calibration",
+        "family": "candidate",
+        "candidate_id": 101,
+        "seed": 9404,
+        "error": "Non-positive polygon central moment"
+      }
+    ]
+  },
+  "Al0_00": {
+    "dataset": "Al0_00",
+    "side_length_um": 400.0,
+    "grain_count": 496,
+    "search_method": "deterministic seeded Latin hypercube plus coordinate-local refinement",
+    "parameter_names": [
+      "diameter_log_spread_scale",
+      "directional_ratio_x_over_y",
+      "aspect_ratio_proxy_scale",
+      "input_size_shape_rank_correlation"
+    ],
+    "parameter_bounds": {
+      "diameter_log_spread_scale": [
+        0.6,
+        1.4
+      ],
+      "directional_ratio_x_over_y": [
+        1.0,
+        3.0
+      ],
+      "aspect_ratio_proxy_scale": [
+        0.5,
+        1.5
+      ],
+      "input_size_shape_rank_correlation": [
+        -1.0,
+        1.0
+      ]
+    },
+    "screening_latin_hypercube_candidates": 12,
+    "total_unique_candidate_count": 21,
+    "screening_seed": 9301,
+    "multi_seed_calibration_seeds": [
+      9301,
+      9302,
+      9303
+    ],
+    "independent_holdout_seeds_not_used_for_selection": [
+      10301,
+      10302,
+      10303,
+      10304,
+      10305
+    ],
+    "morphology_objective_weights": {
+      "ecd_wasserstein_normalized": 1.0,
+      "ar_wasserstein_normalized": 1.0,
+      "ecd_ks": 0.35,
+      "ar_ks": 0.35,
+      "mean_ecd_relative_error": 1.0,
+      "cv_ecd_relative_error": 0.5,
+      "mean_ar_relative_error": 1.0,
+      "ecd_q95_relative_error": 0.25,
+      "ecd_q99_relative_error": 0.15,
+      "ar_q95_relative_error": 0.25,
+      "size_ar_spearman_absolute_error": 0.75,
+      "size_conditioned_ar_error": 1.0
+    },
+    "odf_in_geometry_objective": false,
+    "selected_candidate_id": 15,
+    "selected_parameters": {
+      "diameter_log_spread_scale": 1.184685770526284,
+      "directional_ratio_x_over_y": 2.102194284630028,
+      "aspect_ratio_proxy_scale": 0.9230104046709382,
+      "input_size_shape_rank_correlation": 0.9106056241803258,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "neper_stopping_criterion": {
+      "morphology_time_limit_s": null,
+      "morphology_iteration_limit": 60000
+    },
+    "selected_calibration_objective_mean": 0.10825151585322695,
+    "selected_calibration_objective_standard_deviation": 0.012683856267059907,
+    "selection_provenance": "minimum mean morphology objective among candidates that completed all three calibration seeds; holdout results were not used for selection",
+    "holdout_comparison": {
+      "baseline": {
+        "successful_realizations": 4,
+        "objective_mean": 0.16950432653874842,
+        "objective_standard_deviation": 0.01688345072351369,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.13176045071662532,
+          "ar_wasserstein_normalized": 0.20459653716439286,
+          "ecd_ks": 0.12296670430616169,
+          "ar_ks": 0.1711649678029725,
+          "mean_ecd_relative_error": 0.0801826797799837,
+          "cv_ecd_relative_error": 0.16212400208454902,
+          "mean_ar_relative_error": 0.20353468067910385,
+          "ecd_q95_relative_error": 0.05431711740581245,
+          "ecd_q99_relative_error": 0.110928557923645,
+          "ar_q95_relative_error": 0.32496431305809276,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.14659663749850027,
+          "size_ar_spearman_absolute_error": 0.2010936107644541,
+          "size_conditioned_ar_error": 0.2218705976960472,
+          "odf_number_total_variation": 0.1801040299691763,
+          "odf_area_total_variation": 0.321810890746583
+        },
+        "seeds": [
+          10301,
+          10303,
+          10304,
+          10305
+        ]
+      },
+      "improved": {
+        "successful_realizations": 4,
+        "objective_mean": 0.11391125121164908,
+        "objective_standard_deviation": 0.004060351224090192,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.06219959439769513,
+          "ar_wasserstein_normalized": 0.1513842970831585,
+          "ecd_ks": 0.08009058275093844,
+          "ar_ks": 0.18203146458326974,
+          "mean_ecd_relative_error": 0.0075323205805596875,
+          "cv_ecd_relative_error": 0.015448949270652108,
+          "mean_ar_relative_error": 0.1513842970831585,
+          "ecd_q95_relative_error": 0.02801612162093647,
+          "ecd_q99_relative_error": 0.03615901839799236,
+          "ar_q95_relative_error": 0.11136776138257656,
+          "experimental_size_ar_spearman": 0.054496973265953805,
+          "synthetic_size_ar_spearman": -0.07957542419718704,
+          "size_ar_spearman_absolute_error": 0.13407239746314084,
+          "size_conditioned_ar_error": 0.2529336872537295,
+          "odf_number_total_variation": 0.1772362437818537,
+          "odf_area_total_variation": 0.34688319571426296
+        },
+        "seeds": [
+          10301,
+          10302,
+          10303,
+          10304
+        ]
+      }
+    },
+    "failed_run_count": 7,
+    "failed_runs": [
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 8,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 11,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "local_refinement",
+        "candidate_id": 14,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "local_refinement",
+        "candidate_id": 17,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "multi_seed_calibration",
+        "candidate_id": 7,
+        "seed": 9303,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "baseline",
+        "stage": "independent_holdout",
+        "candidate_id": -1,
+        "seed": 10302,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "independent_holdout",
+        "candidate_id": 15,
+        "seed": 10305,
+        "error": "Non-positive polygon central moment"
+      }
+    ],
+    "total_neper_wall_time_s": 2791.6527737402357,
+    "history_file": "calibration_history.csv"
+  },
+  "Al0_90": {
+    "dataset": "Al0_90",
+    "side_length_um": 400.0,
+    "grain_count": 219,
+    "search_method": "deterministic seeded Latin hypercube plus coordinate-local refinement",
+    "parameter_names": [
+      "diameter_log_spread_scale",
+      "directional_ratio_x_over_y",
+      "aspect_ratio_proxy_scale",
+      "input_size_shape_rank_correlation"
+    ],
+    "parameter_bounds": {
+      "diameter_log_spread_scale": [
+        0.6,
+        1.4
+      ],
+      "directional_ratio_x_over_y": [
+        1.0,
+        3.0
+      ],
+      "aspect_ratio_proxy_scale": [
+        0.5,
+        1.5
+      ],
+      "input_size_shape_rank_correlation": [
+        -1.0,
+        1.0
+      ]
+    },
+    "screening_latin_hypercube_candidates": 12,
+    "total_unique_candidate_count": 21,
+    "screening_seed": 9301,
+    "multi_seed_calibration_seeds": [
+      9301,
+      9302,
+      9303
+    ],
+    "independent_holdout_seeds_not_used_for_selection": [
+      10301,
+      10302,
+      10303,
+      10304,
+      10305
+    ],
+    "morphology_objective_weights": {
+      "ecd_wasserstein_normalized": 1.0,
+      "ar_wasserstein_normalized": 1.0,
+      "ecd_ks": 0.35,
+      "ar_ks": 0.35,
+      "mean_ecd_relative_error": 1.0,
+      "cv_ecd_relative_error": 0.5,
+      "mean_ar_relative_error": 1.0,
+      "ecd_q95_relative_error": 0.25,
+      "ecd_q99_relative_error": 0.15,
+      "ar_q95_relative_error": 0.25,
+      "size_ar_spearman_absolute_error": 0.75,
+      "size_conditioned_ar_error": 1.0
+    },
+    "odf_in_geometry_objective": false,
+    "selected_candidate_id": 9,
+    "selected_parameters": {
+      "diameter_log_spread_scale": 1.1608231838305914,
+      "directional_ratio_x_over_y": 2.7297683280092357,
+      "aspect_ratio_proxy_scale": 0.5009894242295869,
+      "input_size_shape_rank_correlation": 0.4601771564710859,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    },
+    "neper_stopping_criterion": {
+      "morphology_time_limit_s": null,
+      "morphology_iteration_limit": 60000
+    },
+    "selected_calibration_objective_mean": 0.09641930638704672,
+    "selected_calibration_objective_standard_deviation": 0.012392315831034423,
+    "selection_provenance": "minimum mean morphology objective among candidates that completed all three calibration seeds; holdout results were not used for selection",
+    "holdout_comparison": {
+      "baseline": {
+        "successful_realizations": 5,
+        "objective_mean": 0.12988874343534731,
+        "objective_standard_deviation": 0.013955703971160159,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.18234385487546062,
+          "ar_wasserstein_normalized": 0.06696450131292925,
+          "ecd_ks": 0.13639195865674533,
+          "ar_ks": 0.07862839875114488,
+          "mean_ecd_relative_error": 0.11898017124065503,
+          "cv_ecd_relative_error": 0.18738452247431447,
+          "mean_ar_relative_error": 0.041235444897222376,
+          "ecd_q95_relative_error": 0.044680599819272006,
+          "ecd_q99_relative_error": 0.17104467080121202,
+          "ar_q95_relative_error": 0.08217628944649602,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": -0.02575296765569482,
+          "size_ar_spearman_absolute_error": 0.1822862793733829,
+          "size_conditioned_ar_error": 0.21459545898579252,
+          "odf_number_total_variation": 0.3031675992966833,
+          "odf_area_total_variation": 0.5222590812380783
+        },
+        "seeds": [
+          10301,
+          10302,
+          10303,
+          10304,
+          10305
+        ]
+      },
+      "improved": {
+        "successful_realizations": 5,
+        "objective_mean": 0.10825881009329028,
+        "objective_standard_deviation": 0.016313819887068527,
+        "metric_means": {
+          "ecd_wasserstein_normalized": 0.09925002137421092,
+          "ar_wasserstein_normalized": 0.1016343667454052,
+          "ecd_ks": 0.07955634890390902,
+          "ar_ks": 0.09401712830181111,
+          "mean_ecd_relative_error": 0.03102745200209845,
+          "cv_ecd_relative_error": 0.051090130712277096,
+          "mean_ar_relative_error": 0.06279042783636773,
+          "ecd_q95_relative_error": 0.020651497687923008,
+          "ecd_q99_relative_error": 0.10009984095521962,
+          "ar_q95_relative_error": 0.12259759130122685,
+          "experimental_size_ar_spearman": 0.15653331171768808,
+          "synthetic_size_ar_spearman": -0.09316119597381381,
+          "size_ar_spearman_absolute_error": 0.2496945076915019,
+          "size_conditioned_ar_error": 0.2036707772135864,
+          "odf_number_total_variation": 0.3031675992966833,
+          "odf_area_total_variation": 0.552499380386167
+        },
+        "seeds": [
+          10301,
+          10302,
+          10303,
+          10304,
+          10305
+        ]
+      }
+    },
+    "failed_run_count": 7,
+    "failed_runs": [
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 3,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 5,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 7,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 8,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "screening",
+        "candidate_id": 12,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "local_refinement",
+        "candidate_id": 14,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      },
+      {
+        "family": "improved",
+        "stage": "local_refinement",
+        "candidate_id": 18,
+        "seed": 9301,
+        "error": "Non-positive polygon central moment"
+      }
+    ],
+    "total_neper_wall_time_s": 2993.3280861159437,
+    "history_file": "calibration_history.csv"
+  }
+}

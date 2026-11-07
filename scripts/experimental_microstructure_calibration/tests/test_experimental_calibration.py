@@ -21,7 +21,11 @@ from clean_ebsd_data import (
     clean_grains,
 )  # noqa: E402
 from common import DatasetSpec, NEPER  # noqa: E402
-from compare_experimental_neper import comparison_metrics  # noqa: E402
+from compare_experimental_neper import (  # noqa: E402
+    comparison_metrics,
+    detailed_comparison_metrics,
+    morphology_objective,
+)
 from extract_experimental_statistics import summarize_grains  # noqa: E402
 from export_public_results import _sanitize  # noqa: E402
 from extract_texture_statistics import (  # noqa: E402
@@ -68,6 +72,36 @@ def synthetic_frame(count: int = 40) -> pd.DataFrame:
 
 
 class ExperimentalCalibrationTests(unittest.TestCase):
+    def test_neper_stopping_criteria_are_mutually_exclusive(self):
+        experimental = add_derived_geometry(synthetic_frame(20))
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "mutually exclusive"):
+                generate_rve(
+                    experimental,
+                    Path(directory),
+                    dataset_key="SYNTHETIC_STOPPING_TEST_ONLY",
+                    phase="all",
+                    side_length_um=20.0,
+                    seed=2489,
+                    grain_count=8,
+                    parameters=NeperMorphologyParameters(),
+                    morphology_time_limit_s=1.0,
+                    morphology_iteration_limit=100,
+                )
+
+    def test_detailed_metrics_are_zero_for_identical_population(self):
+        frame = synthetic_frame(40)
+        frame["equivalent_diameter_um"] = 2.0 * np.sqrt(frame["grain_area_um2"] / np.pi)
+        frame["aspect_ratio_recomputed"] = (
+            frame["semi_axis_a_um"] / frame["semi_axis_b_um"]
+        )
+        metrics = detailed_comparison_metrics(frame, frame.copy())
+        for key, value in metrics.items():
+            if key.startswith("experimental_") or key.startswith("synthetic_"):
+                continue
+            self.assertAlmostEqual(value, 0.0, places=12, msg=key)
+        self.assertAlmostEqual(morphology_objective(metrics), 0.0, places=12)
+
     def test_loader_maps_columns_and_degrees(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "sample.csv"
@@ -248,7 +282,7 @@ class ExperimentalCalibrationTests(unittest.TestCase):
                     diameter_log_spread_scale=1.0,
                     directional_ratio_x_over_y=1.25,
                 ),
-                morphology_time_limit_s=2.0,
+                morphology_iteration_limit=2000,
                 force=True,
             )
             synthetic = pd.read_csv(Path(directory) / "synthetic_grains.csv")
@@ -261,6 +295,28 @@ class ExperimentalCalibrationTests(unittest.TestCase):
             self.assertTrue(manifest["periodicity"]["xy_periodic"])
             metrics = comparison_metrics(experimental, synthetic)
             self.assertTrue(np.isfinite(metrics["objective"]))
+            second_directory = Path(directory) / "independent_repeat"
+            repeated = generate_rve(
+                experimental,
+                second_directory,
+                dataset_key="SYNTHETIC_CAPABILITY_TEST_ONLY",
+                phase="all",
+                side_length_um=30.0,
+                seed=92489,
+                grain_count=10,
+                parameters=NeperMorphologyParameters(
+                    diameter_log_spread_scale=1.0,
+                    directional_ratio_x_over_y=1.25,
+                ),
+                morphology_iteration_limit=2000,
+                force=True,
+            )
+            self.assertEqual(
+                repeated["tessellation_sha256"], manifest["tessellation_sha256"]
+            )
+            self.assertEqual(
+                repeated["grain_table_sha256"], manifest["grain_table_sha256"]
+            )
             reused = generate_rve(
                 experimental,
                 Path(directory),
@@ -273,7 +329,7 @@ class ExperimentalCalibrationTests(unittest.TestCase):
                     diameter_log_spread_scale=1.0,
                     directional_ratio_x_over_y=1.25,
                 ),
-                morphology_time_limit_s=2.0,
+                morphology_iteration_limit=2000,
             )
             self.assertTrue(reused["cache_reused"])
             changed = generate_rve(
@@ -288,7 +344,7 @@ class ExperimentalCalibrationTests(unittest.TestCase):
                     diameter_log_spread_scale=1.0,
                     directional_ratio_x_over_y=1.35,
                 ),
-                morphology_time_limit_s=2.0,
+                morphology_iteration_limit=2000,
             )
             self.assertFalse(changed["cache_reused"])
 
