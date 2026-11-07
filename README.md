@@ -91,6 +91,23 @@ The scientific gate is data driven. The executed 20-grain study found that the
 macroscopic morphology contrast reverses sign across geometry seeds, so the
 three-variable Bayesian optimization was intentionally not run.
 
+Calibrate periodic Neper RVEs to private experimental EBSD statistics without
+copying raw data into the public repository:
+
+```bash
+export SPP2489_EBSD_DATA_ROOT=/read-only/path/to/damic_spp2489
+python scripts/experimental_microstructure_calibration/run_calibration.py \
+  --statistics-only --require-reference-count
+```
+
+The workflow keeps Al1 oBD/pBD and Al0 00/90 separate, writes raw-versus-cleaned
+statistics, fits positive and mixture grain-size distributions, uses
+cubic-symmetry-aware SO(3) texture sampling, and calibrates paired cell-wise
+grain-size and shape targets with independent Neper seeds and RVE sizes. Raw and
+per-grain experimental derivatives remain Git-ignored. The reviewed aggregate
+results and limitations are in the
+[public calibration report](results/experimental_microstructure_calibration_public/EXPERIMENTAL_NEPER_CALIBRATION_REPORT.md).
+
 ## Project structure
 
 - `include/materials/`, `src/materials/`: finite-strain constitutive models,
@@ -114,6 +131,11 @@ three-variable Bayesian optimization was intentionally not run.
   `aspratio(a,1)` morphology generation, periodic statistics, geometry-aware
   FEM caching, homogeneous control, morphology sensitivity, uncertainty gate,
   and publication figures.
+- `scripts/experimental_microstructure_calibration/`: private EBSD import and
+  cleaning audit, ECD/AR/joint distribution fitting, phase-separated cubic
+  texture descriptors, empirical `diameq` Neper generation, deterministic
+  statistical calibration, independent-seed validation, RVE-size checks, and
+  ten scientific figures. See its local `README.md` for data configuration.
 - `results/cp_inverse_design_2d/`: reproducible raw runs, public target,
   compact optimization history, verification artifacts, copied Exodus files,
   and figures (large raw files remain ignored by Git).

@@ -1,0 +1,50 @@
+{
+  "Al1_oBD": {
+    "recommended_rve_side_length_um": 400.0,
+    "grain_count": 298,
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.25660608,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    }
+  },
+  "Al1_pBD": {
+    "recommended_rve_side_length_um": 400.0,
+    "grain_count": 152,
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.45,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    }
+  },
+  "Al0_00": {
+    "recommended_rve_side_length_um": 400.0,
+    "grain_count": 496,
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 1.26,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 0.75,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    }
+  },
+  "Al0_90": {
+    "recommended_rve_side_length_um": 400.0,
+    "grain_count": 219,
+    "parameters": {
+      "diameter_log_spread_scale": 0.95,
+      "directional_ratio_x_over_y": 2.25,
+      "aspect_ratio_proxy_scale": 1.0,
+      "input_size_shape_rank_correlation": 1.0,
+      "one_minus_circularity_mean": null,
+      "one_minus_circularity_standard_deviation": null
+    }
+  }
+}

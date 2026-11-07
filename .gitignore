@@ -188,6 +188,17 @@ moose/include/base/Precompiled.h.gch
 
 framework/contrib/exodiff/exodiff
 
+# Private EBSD sources and all derived experimental calibration artifacts.
+# These may be published only after an explicit data-sharing review.
+results/experimental_microstructure_calibration/
+# Aggregate-only, privacy-reviewed export generated from the directory above.
+!results/experimental_microstructure_calibration_public/
+!results/experimental_microstructure_calibration_public/**
+Al1_oBD.csv
+Al1_pBD.csv
+GrainExtractionZ1_15_00_250x_B2_M1.csv
+GrainExtractionZ1_15_90_100x_B2_M1.csv
+
 # Mac garbage
 .DS_Store
 *.dSYM

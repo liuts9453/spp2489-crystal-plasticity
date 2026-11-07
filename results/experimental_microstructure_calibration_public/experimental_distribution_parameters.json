@@ -1,0 +1,804 @@
+{
+  "Al1_oBD": {
+    "equivalent_diameter_um": {
+      "sample_count": 1888,
+      "candidates": [
+        {
+          "model": "lognormal",
+          "scipy_parameters": [
+            0.9016308074945161,
+            0.0,
+            11.558144623819295
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7104.126255192895,
+          "aic": 14212.25251038579,
+          "bic": 14223.3390570792,
+          "ks_statistic": 0.05890840931252983,
+          "ks_pvalue": 3.885642405215856e-06,
+          "q95_relative_error": -0.19025063945190315,
+          "q99_relative_error": 0.10900548983952185
+        },
+        {
+          "model": "weibull",
+          "scipy_parameters": [
+            1.0799442741245122,
+            0.0,
+            18.44381415208835
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7316.336610170452,
+          "aic": 14636.673220340905,
+          "bic": 14647.759767034315,
+          "ks_statistic": 0.12262849338619017,
+          "ks_pvalue": 3.34864141532375e-25,
+          "q95_relative_error": -0.19004342348121495,
+          "q99_relative_error": -0.10647091306842268
+        },
+        {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.295626639168979,
+            0.0,
+            13.757074952090278
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7290.026874203166,
+          "aic": 14584.053748406332,
+          "bic": 14595.140295099742,
+          "ks_statistic": 0.10537948706043282,
+          "ks_pvalue": 1.0389311960943873e-18,
+          "q95_relative_error": -0.22426165966251127,
+          "q99_relative_error": -0.14892000261107585
+        },
+        {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.33303224206984744,
+            0.6669677579301533
+          ],
+          "log_means": [
+            1.605533044894696,
+            2.8677489403242893
+          ],
+          "log_standard_deviations": [
+            0.35642940867870715,
+            0.7904672415495176
+          ],
+          "log_likelihood": -6992.426147207115,
+          "aic": 13994.85229441423,
+          "bic": 14022.568661147758,
+          "cdf_supremum_discrepancy": 0.029262111485168107
+        }
+      ],
+      "ranking_by_bic": [
+        "two_component_lognormal_mixture",
+        "lognormal",
+        "gamma",
+        "weibull"
+      ],
+      "selected_by_bic": {
+        "model": "two_component_lognormal_mixture",
+        "weights": [
+          0.33303224206984744,
+          0.6669677579301533
+        ],
+        "log_means": [
+          1.605533044894696,
+          2.8677489403242893
+        ],
+        "log_standard_deviations": [
+          0.35642940867870715,
+          0.7904672415495176
+        ],
+        "log_likelihood": -6992.426147207115,
+        "aic": 13994.85229441423,
+        "bic": 14022.568661147758,
+        "cdf_supremum_discrepancy": 0.029262111485168107
+      },
+      "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+    },
+    "aspect_ratio": {
+      "support": "AR >= 1",
+      "transformation": "z = AR - 1; positive distributions are fit to z",
+      "excess_over_one": {
+        "sample_count": 1888,
+        "candidates": [
+          {
+            "model": "lognormal",
+            "scipy_parameters": [
+              0.9853956383102336,
+              0.0,
+              1.0445604295042006
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2733.4891316857816,
+            "aic": 5470.978263371563,
+            "bic": 5482.064810064974,
+            "ks_statistic": 0.023725432460085905,
+            "ks_pvalue": 0.23461674368979502,
+            "q95_relative_error": 0.1793382646326968,
+            "q99_relative_error": 0.2261416864035223
+          },
+          {
+            "model": "weibull",
+            "scipy_parameters": [
+              1.0184066798627733,
+              0.0,
+              1.6875130316297358
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2858.1533782310635,
+            "aic": 5720.306756462127,
+            "bic": 5731.393303155538,
+            "ks_statistic": 0.06347990378209939,
+            "ks_pvalue": 4.6686526105215585e-07,
+            "q95_relative_error": 0.1064312261491462,
+            "q99_relative_error": -0.10350588786415651
+          },
+          {
+            "model": "gamma",
+            "scipy_parameters": [
+              1.2017328692101363,
+              0.0,
+              1.3915831686977405
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2839.8694313226943,
+            "aic": 5683.7388626453885,
+            "bic": 5694.8254093388,
+            "ks_statistic": 0.061790893934957236,
+            "ks_pvalue": 1.0404554505485076e-06,
+            "q95_relative_error": 0.048765920715472026,
+            "q99_relative_error": -0.1662343783925251
+          },
+          {
+            "model": "two_component_lognormal_mixture",
+            "weights": [
+              0.20428005067643318,
+              0.7957199493235665
+            ],
+            "log_means": [
+              -0.334380375952826,
+              0.14063163244740942
+            ],
+            "log_standard_deviations": [
+              1.3200189235430642,
+              0.852562810788218
+            ],
+            "log_likelihood": -2716.114162511336,
+            "aic": 5442.228325022672,
+            "bic": 5469.944691756199,
+            "cdf_supremum_discrepancy": 0.016975374701202472
+          }
+        ],
+        "ranking_by_bic": [
+          "two_component_lognormal_mixture",
+          "lognormal",
+          "gamma",
+          "weibull"
+        ],
+        "selected_by_bic": {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.20428005067643318,
+            0.7957199493235665
+          ],
+          "log_means": [
+            -0.334380375952826,
+            0.14063163244740942
+          ],
+          "log_standard_deviations": [
+            1.3200189235430642,
+            0.852562810788218
+          ],
+          "log_likelihood": -2716.114162511336,
+          "aic": 5442.228325022672,
+          "bic": 5469.944691756199,
+          "cdf_supremum_discrepancy": 0.016975374701202472
+        },
+        "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+      }
+    }
+  },
+  "Al1_pBD": {
+    "equivalent_diameter_um": {
+      "sample_count": 659,
+      "candidates": [
+        {
+          "model": "lognormal",
+          "scipy_parameters": [
+            0.9860956293883562,
+            0.0,
+            12.887985476757963
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -2610.4519607038865,
+          "aic": 5224.903921407773,
+          "bic": 5233.885368476778,
+          "ks_statistic": 0.06442267341819374,
+          "ks_pvalue": 0.008041596452392526,
+          "q95_relative_error": -0.19179036781119793,
+          "q99_relative_error": -0.09023020471023172
+        },
+        {
+          "model": "weibull",
+          "scipy_parameters": [
+            0.9523973181705268,
+            0.0,
+            21.593719667280908
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -2699.665108666487,
+          "aic": 5403.330217332974,
+          "bic": 5412.311664401979,
+          "ks_statistic": 0.1335005553041162,
+          "ks_pvalue": 1.055130352375128e-10,
+          "q95_relative_error": -0.15361542707654088,
+          "q99_relative_error": -0.23581632407752134
+        },
+        {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.0567727484738703,
+            0.0,
+            20.985050701949064
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -2700.6286576928424,
+          "aic": 5405.257315385685,
+          "bic": 5414.23876245469,
+          "ks_statistic": 0.12623059496619782,
+          "ks_pvalue": 1.3005223035767686e-09,
+          "q95_relative_error": -0.19302160037854477,
+          "q99_relative_error": -0.2927139144321017
+        },
+        {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.3842713364895447,
+            0.6157286635104545
+          ],
+          "log_means": [
+            1.7332303703779603,
+            3.069963898296835
+          ],
+          "log_standard_deviations": [
+            0.4233326780063727,
+            0.8836064843052058
+          ],
+          "log_likelihood": -2569.6350365979783,
+          "aic": 5149.270073195957,
+          "bic": 5171.723690868469,
+          "cdf_supremum_discrepancy": 0.02378149005789329
+        }
+      ],
+      "ranking_by_bic": [
+        "two_component_lognormal_mixture",
+        "lognormal",
+        "weibull",
+        "gamma"
+      ],
+      "selected_by_bic": {
+        "model": "two_component_lognormal_mixture",
+        "weights": [
+          0.3842713364895447,
+          0.6157286635104545
+        ],
+        "log_means": [
+          1.7332303703779603,
+          3.069963898296835
+        ],
+        "log_standard_deviations": [
+          0.4233326780063727,
+          0.8836064843052058
+        ],
+        "log_likelihood": -2569.6350365979783,
+        "aic": 5149.270073195957,
+        "bic": 5171.723690868469,
+        "cdf_supremum_discrepancy": 0.02378149005789329
+      },
+      "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+    },
+    "aspect_ratio": {
+      "support": "AR >= 1",
+      "transformation": "z = AR - 1; positive distributions are fit to z",
+      "excess_over_one": {
+        "sample_count": 659,
+        "candidates": [
+          {
+            "model": "lognormal",
+            "scipy_parameters": [
+              1.0075960423550934,
+              0.0,
+              2.27453707232202
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -1481.6181133981293,
+            "aic": 2967.2362267962585,
+            "bic": 2976.2176738652634,
+            "ks_statistic": 0.04839119067823705,
+            "ks_pvalue": 0.0883761990444325,
+            "q95_relative_error": 0.22772443047832103,
+            "q99_relative_error": 0.574725675435899
+          },
+          {
+            "model": "weibull",
+            "scipy_parameters": [
+              1.131505907789295,
+              0.0,
+              3.6849318321243625
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -1478.9004905778415,
+            "aic": 2961.800981155683,
+            "bic": 2970.782428224688,
+            "ks_statistic": 0.04632535137646432,
+            "ks_pvalue": 0.11454233774209077,
+            "q95_relative_error": -3.8916984988310084e-05,
+            "q99_relative_error": -0.05613735935114848
+          },
+          {
+            "model": "gamma",
+            "scipy_parameters": [
+              1.2909322086654504,
+              0.0,
+              2.721823830061566
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -1474.7565534180055,
+            "aic": 2953.513106836011,
+            "bic": 2962.494553905016,
+            "ks_statistic": 0.04355901032909948,
+            "ks_pvalue": 0.1592353386479003,
+            "q95_relative_error": -0.00902729632689794,
+            "q99_relative_error": -0.05224926431296665
+          },
+          {
+            "model": "two_component_lognormal_mixture",
+            "weights": [
+              0.4208888944476405,
+              0.5791111055523593
+            ],
+            "log_means": [
+              0.09847496429959131,
+              1.34746082516302
+            ],
+            "log_standard_deviations": [
+              0.9332976078993023,
+              0.6807964115327155
+            ],
+            "log_likelihood": -1466.9885455465542,
+            "aic": 2943.9770910931084,
+            "bic": 2966.4307087656207,
+            "cdf_supremum_discrepancy": 0.025250474766016384
+          }
+        ],
+        "ranking_by_bic": [
+          "gamma",
+          "two_component_lognormal_mixture",
+          "weibull",
+          "lognormal"
+        ],
+        "selected_by_bic": {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.2909322086654504,
+            0.0,
+            2.721823830061566
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -1474.7565534180055,
+          "aic": 2953.513106836011,
+          "bic": 2962.494553905016,
+          "ks_statistic": 0.04355901032909948,
+          "ks_pvalue": 0.1592353386479003,
+          "q95_relative_error": -0.00902729632689794,
+          "q99_relative_error": -0.05224926431296665
+        },
+        "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+      }
+    }
+  },
+  "Al0_00": {
+    "equivalent_diameter_um": {
+      "sample_count": 2114,
+      "candidates": [
+        {
+          "model": "lognormal",
+          "scipy_parameters": [
+            0.8120408657475294,
+            0.0,
+            10.346281527413868
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7499.121371397334,
+          "aic": 15002.242742794668,
+          "bic": 15013.555417127529,
+          "ks_statistic": 0.062463924758238976,
+          "ks_pvalue": 1.297436681865708e-07,
+          "q95_relative_error": -0.1571078191079286,
+          "q99_relative_error": 0.07559137064582755
+        },
+        {
+          "model": "weibull",
+          "scipy_parameters": [
+            1.2024134833298505,
+            0.0,
+            15.741864942568974
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7730.780261938018,
+          "aic": 15465.560523876036,
+          "bic": 15476.873198208898,
+          "ks_statistic": 0.11840907535203458,
+          "ks_pvalue": 2.777923359924399e-26,
+          "q95_relative_error": -0.16005542136169804,
+          "q99_relative_error": -0.11876165856010704
+        },
+        {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.5769517658481245,
+            0.0,
+            9.30502188620239
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -7676.017626507187,
+          "aic": 15356.035253014374,
+          "bic": 15367.347927347235,
+          "ks_statistic": 0.09810347094588351,
+          "ks_pvalue": 3.667097368424495e-18,
+          "q95_relative_error": -0.19462524598506345,
+          "q99_relative_error": -0.1477827643550842
+        },
+        {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.36015377318396424,
+            0.6398462268160351
+          ],
+          "log_means": [
+            1.6038273851989568,
+            2.7491022442715782
+          ],
+          "log_standard_deviations": [
+            0.35129975435666766,
+            0.6990805941738464
+          ],
+          "log_likelihood": -7385.939772177378,
+          "aic": 14781.879544354755,
+          "bic": 14810.161230186906,
+          "cdf_supremum_discrepancy": 0.02893330808019018
+        }
+      ],
+      "ranking_by_bic": [
+        "two_component_lognormal_mixture",
+        "lognormal",
+        "gamma",
+        "weibull"
+      ],
+      "selected_by_bic": {
+        "model": "two_component_lognormal_mixture",
+        "weights": [
+          0.36015377318396424,
+          0.6398462268160351
+        ],
+        "log_means": [
+          1.6038273851989568,
+          2.7491022442715782
+        ],
+        "log_standard_deviations": [
+          0.35129975435666766,
+          0.6990805941738464
+        ],
+        "log_likelihood": -7385.939772177378,
+        "aic": 14781.879544354755,
+        "bic": 14810.161230186906,
+        "cdf_supremum_discrepancy": 0.02893330808019018
+      },
+      "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+    },
+    "aspect_ratio": {
+      "support": "AR >= 1",
+      "transformation": "z = AR - 1; positive distributions are fit to z",
+      "excess_over_one": {
+        "sample_count": 2114,
+        "candidates": [
+          {
+            "model": "lognormal",
+            "scipy_parameters": [
+              0.970639566906798,
+              0.0,
+              1.092305964685911
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -3123.2859234501575,
+            "aic": 6250.571846900315,
+            "bic": 6261.884521233175,
+            "ks_statistic": 0.029751985679411952,
+            "ks_pvalue": 0.04644014407451602,
+            "q95_relative_error": 0.12065811031792963,
+            "q99_relative_error": 0.4380715550549108
+          },
+          {
+            "model": "weibull",
+            "scipy_parameters": [
+              1.1517263699205753,
+              0.0,
+              1.7399323605770238
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -3135.4971506695174,
+            "aic": 6274.994301339035,
+            "bic": 6286.306975671895,
+            "ks_statistic": 0.04551164102241845,
+            "ks_pvalue": 0.00030420080140189566,
+            "q95_relative_error": -0.06240918992143754,
+            "q99_relative_error": -0.09804923517615821
+          },
+          {
+            "model": "gamma",
+            "scipy_parameters": [
+              1.3574046114954228,
+              0.0,
+              1.2144271496405488
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -3114.979685596403,
+            "aic": 6233.959371192806,
+            "bic": 6245.272045525667,
+            "ks_statistic": 0.0431613134164468,
+            "ks_pvalue": 0.0007359013615061052,
+            "q95_relative_error": -0.07688174642068644,
+            "q99_relative_error": -0.10045163936911251
+          },
+          {
+            "model": "two_component_lognormal_mixture",
+            "weights": [
+              0.25621171532168013,
+              0.7437882846783197
+            ],
+            "log_means": [
+              -0.6637118495978265,
+              0.34733240937690657
+            ],
+            "log_standard_deviations": [
+              1.0572495558422903,
+              0.7872343769663179
+            ],
+            "log_likelihood": -3089.9470170024165,
+            "aic": 6189.894034004833,
+            "bic": 6218.175719836984,
+            "cdf_supremum_discrepancy": 0.012477609171138715
+          }
+        ],
+        "ranking_by_bic": [
+          "two_component_lognormal_mixture",
+          "gamma",
+          "lognormal",
+          "weibull"
+        ],
+        "selected_by_bic": {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.25621171532168013,
+            0.7437882846783197
+          ],
+          "log_means": [
+            -0.6637118495978265,
+            0.34733240937690657
+          ],
+          "log_standard_deviations": [
+            1.0572495558422903,
+            0.7872343769663179
+          ],
+          "log_likelihood": -3089.9470170024165,
+          "aic": 6189.894034004833,
+          "bic": 6218.175719836984,
+          "cdf_supremum_discrepancy": 0.012477609171138715
+        },
+        "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+      }
+    }
+  },
+  "Al0_90": {
+    "equivalent_diameter_um": {
+      "sample_count": 1366,
+      "candidates": [
+        {
+          "model": "lognormal",
+          "scipy_parameters": [
+            0.9287442937380445,
+            0.0,
+            12.242416284161791
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -5258.9953270403885,
+          "aic": 10521.990654080777,
+          "bic": 10532.429938161038,
+          "ks_statistic": 0.056351048101688825,
+          "ks_pvalue": 0.0003273511520780584,
+          "q95_relative_error": -0.19695467334851494,
+          "q99_relative_error": -0.07540691029593337
+        },
+        {
+          "model": "weibull",
+          "scipy_parameters": [
+            1.0248315771964054,
+            0.0,
+            19.83940510373848
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -5430.028247536685,
+          "aic": 10864.05649507337,
+          "bic": 10874.49577915363,
+          "ks_statistic": 0.12604933498291954,
+          "ks_pvalue": 2.2325913043712453e-19,
+          "q95_relative_error": -0.17603330881777352,
+          "q99_relative_error": -0.23359475128339052
+        },
+        {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.2012808919988802,
+            0.0,
+            16.318907437583515
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -5417.164929692337,
+          "aic": 10838.329859384674,
+          "bic": 10848.769143464935,
+          "ks_statistic": 0.10682607231320207,
+          "ks_pvalue": 4.9846387717924265e-14,
+          "q95_relative_error": -0.21586529742896585,
+          "q99_relative_error": -0.28244593185331296
+        },
+        {
+          "model": "two_component_lognormal_mixture",
+          "weights": [
+            0.19603643217263805,
+            0.8039635678273622
+          ],
+          "log_means": [
+            1.4441300532177366,
+            2.7635637386113223
+          ],
+          "log_standard_deviations": [
+            0.25376088392923685,
+            0.8461141697398524
+          ],
+          "log_likelihood": -5191.715825625364,
+          "aic": 10393.431651250728,
+          "bic": 10419.529861451381,
+          "cdf_supremum_discrepancy": 0.045653276280434696
+        }
+      ],
+      "ranking_by_bic": [
+        "two_component_lognormal_mixture",
+        "lognormal",
+        "gamma",
+        "weibull"
+      ],
+      "selected_by_bic": {
+        "model": "two_component_lognormal_mixture",
+        "weights": [
+          0.19603643217263805,
+          0.8039635678273622
+        ],
+        "log_means": [
+          1.4441300532177366,
+          2.7635637386113223
+        ],
+        "log_standard_deviations": [
+          0.25376088392923685,
+          0.8461141697398524
+        ],
+        "log_likelihood": -5191.715825625364,
+        "aic": 10393.431651250728,
+        "bic": 10419.529861451381,
+        "cdf_supremum_discrepancy": 0.045653276280434696
+      },
+      "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+    },
+    "aspect_ratio": {
+      "support": "AR >= 1",
+      "transformation": "z = AR - 1; positive distributions are fit to z",
+      "excess_over_one": {
+        "sample_count": 1366,
+        "candidates": [
+          {
+            "model": "lognormal",
+            "scipy_parameters": [
+              0.9669638380772146,
+              0.0,
+              2.1300153438205323
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2925.252850658349,
+            "aic": 5854.505701316698,
+            "bic": 5864.944985396959,
+            "ks_statistic": 0.048369134427750815,
+            "ks_pvalue": 0.0032369617646709884,
+            "q95_relative_error": 0.19744578642304295,
+            "q99_relative_error": 0.4361427687046846
+          },
+          {
+            "model": "weibull",
+            "scipy_parameters": [
+              1.1960335221771812,
+              0.0,
+              3.363133181776231
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2900.570104477606,
+            "aic": 5805.140208955212,
+            "bic": 5815.579493035473,
+            "ks_statistic": 0.035227824055022894,
+            "ks_pvalue": 0.0657973999726319,
+            "q95_relative_error": -0.03557499427851845,
+            "q99_relative_error": -0.14265877610589514
+          },
+          {
+            "model": "gamma",
+            "scipy_parameters": [
+              1.4160204931330216,
+              0.0,
+              2.2282414979829412
+            ],
+            "parameter_order": "shape(s), loc, scale",
+            "log_likelihood": -2889.805041259163,
+            "aic": 5783.610082518326,
+            "bic": 5794.049366598587,
+            "ks_statistic": 0.027384594047160316,
+            "ks_pvalue": 0.25260902449091527,
+            "q95_relative_error": -0.03981135791501222,
+            "q99_relative_error": -0.1283379787152734
+          },
+          {
+            "model": "two_component_lognormal_mixture",
+            "weights": [
+              0.23715385319892524,
+              0.7628461468010739
+            ],
+            "log_means": [
+              -0.2319907908359753,
+              1.063316235812275
+            ],
+            "log_standard_deviations": [
+              0.9966674953805447,
+              0.7204059898871495
+            ],
+            "log_likelihood": -2881.8655256813554,
+            "aic": 5773.731051362711,
+            "bic": 5799.8292615633645,
+            "cdf_supremum_discrepancy": 0.013052572627173409
+          }
+        ],
+        "ranking_by_bic": [
+          "gamma",
+          "two_component_lognormal_mixture",
+          "weibull",
+          "lognormal"
+        ],
+        "selected_by_bic": {
+          "model": "gamma",
+          "scipy_parameters": [
+            1.4160204931330216,
+            0.0,
+            2.2282414979829412
+          ],
+          "parameter_order": "shape(s), loc, scale",
+          "log_likelihood": -2889.805041259163,
+          "aic": 5783.610082518326,
+          "bic": 5794.049366598587,
+          "ks_statistic": 0.027384594047160316,
+          "ks_pvalue": 0.25260902449091527,
+          "q95_relative_error": -0.03981135791501222,
+          "q99_relative_error": -0.1283379787152734
+        },
+        "selection_warning": "BIC is one diagnostic; CDF and q95/q99 tail errors must also be reviewed before selecting a Neper target distribution."
+      }
+    }
+  }
+}
