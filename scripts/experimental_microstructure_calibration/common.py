@@ -20,6 +20,14 @@ RESULTS_ROOT = (
     .expanduser()
     .resolve()
 )
+DEFAULT_V2_RESULTS_ROOT = (
+    ROOT / "results" / "experimental_microstructure_calibration_v2"
+)
+V2_RESULTS_ROOT = (
+    Path(os.environ.get("SPP2489_EBSD_V2_RESULTS_ROOT", DEFAULT_V2_RESULTS_ROOT))
+    .expanduser()
+    .resolve()
+)
 DATA_ROOT_ENV = "SPP2489_EBSD_DATA_ROOT"
 _NEPER_CONFIGURED = os.environ.get("SPP2489_NEPER")
 _NEPER_DISCOVERED = shutil.which("neper")

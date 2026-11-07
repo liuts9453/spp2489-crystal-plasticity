@@ -23,8 +23,13 @@ def _cdf_supremum(target: np.ndarray, candidate: np.ndarray) -> float:
     return float(stats.ks_2samp(target, candidate).statistic)
 
 
-def _ipf_histogram(frame: pd.DataFrame, bins: int = 18) -> np.ndarray:
+def _ipf_histogram(
+    frame: pd.DataFrame, bins: int = 18, weight_column: str | None = None
+) -> np.ndarray:
     rotations = rotations_from_frame(frame)
+    weights = (
+        None if weight_column is None else frame[weight_column].to_numpy(dtype=float)
+    )
     descriptors = []
     for axis in np.eye(3):
         coordinates = ipf_coordinates(rotations, axis)
@@ -33,6 +38,7 @@ def _ipf_histogram(frame: pd.DataFrame, bins: int = 18) -> np.ndarray:
             coordinates[:, 1],
             bins=(bins, bins),
             range=((0.0, 1.0), (0.0, 1.0)),
+            weights=weights,
         )[0]
         histogram /= np.sum(histogram)
         descriptors.append(histogram.ravel())
@@ -50,13 +56,26 @@ def _canonical_phase_labels(series: pd.Series) -> pd.Series:
 
 
 def _phase_texture_distance(
-    experimental: pd.DataFrame, synthetic: pd.DataFrame
+    experimental: pd.DataFrame,
+    synthetic: pd.DataFrame,
+    *,
+    weight_column: str | None = None,
 ) -> tuple[float, dict[str, float]]:
     exp_phase = _canonical_phase_labels(experimental["phase"])
     syn_phase = _canonical_phase_labels(synthetic["phase"])
     phases = sorted(set(exp_phase) | set(syn_phase))
-    exp_fractions = exp_phase.value_counts(normalize=True)
-    syn_fractions = syn_phase.value_counts(normalize=True)
+    if weight_column is None:
+        exp_fractions = exp_phase.value_counts(normalize=True)
+        syn_fractions = syn_phase.value_counts(normalize=True)
+    else:
+        exp_weights = experimental[weight_column].to_numpy(dtype=float)
+        syn_weights = synthetic[weight_column].to_numpy(dtype=float)
+        exp_fractions = pd.Series(exp_weights).groupby(
+            exp_phase.to_numpy()
+        ).sum() / np.sum(exp_weights)
+        syn_fractions = pd.Series(syn_weights).groupby(
+            syn_phase.to_numpy()
+        ).sum() / np.sum(syn_weights)
     phase_fraction_error = 0.5 * sum(
         abs(float(exp_fractions.get(phase, 0.0)) - float(syn_fractions.get(phase, 0.0)))
         for phase in phases
@@ -71,12 +90,122 @@ def _phase_texture_distance(
         if exp_group.empty or syn_group.empty:
             diagnostics[f"phase_{phase}_odf_total_variation"] = 1.0
             continue
-        exp_odf = _ipf_histogram(exp_group)
-        syn_odf = _ipf_histogram(syn_group)
+        exp_odf = _ipf_histogram(exp_group, weight_column=weight_column)
+        syn_odf = _ipf_histogram(syn_group, weight_column=weight_column)
         distance = float(0.5 * np.sum(np.abs(exp_odf - syn_odf)) / 3.0)
         diagnostics[f"phase_{phase}_odf_total_variation"] = distance
         odf_distance += float(exp_fractions.get(phase, 0.0)) * distance
     return min(float(odf_distance), 1.0), diagnostics
+
+
+def _relative_error(target: float, candidate: float) -> float:
+    return float(abs(candidate - target) / max(abs(target), 1.0e-15))
+
+
+def _quantile_relative_error(
+    target: np.ndarray, candidate: np.ndarray, quantile: float
+) -> float:
+    return _relative_error(
+        float(np.quantile(target, quantile)),
+        float(np.quantile(candidate, quantile)),
+    )
+
+
+def _conditional_aspect_error(
+    target_diameter: np.ndarray,
+    target_aspect: np.ndarray,
+    candidate_diameter: np.ndarray,
+    candidate_aspect: np.ndarray,
+    bins: int = 5,
+) -> float:
+    """Compare AR distributions within experimental ECD-quantile bins."""
+    edges = np.unique(np.quantile(target_diameter, np.linspace(0.0, 1.0, bins + 1)))
+    if len(edges) < 3:
+        return 0.0
+    errors = []
+    for lower, upper in zip(edges[:-1], edges[1:]):
+        target_mask = (target_diameter >= lower) & (target_diameter <= upper)
+        candidate_mask = (candidate_diameter >= lower) & (candidate_diameter <= upper)
+        if not np.any(target_mask) or not np.any(candidate_mask):
+            errors.append(1.0)
+            continue
+        scale = max(float(np.mean(target_aspect[target_mask])), 1.0e-15)
+        errors.append(
+            float(
+                stats.wasserstein_distance(
+                    target_aspect[target_mask], candidate_aspect[candidate_mask]
+                )
+                / scale
+            )
+        )
+    return float(np.mean(errors))
+
+
+def detailed_comparison_metrics(
+    experimental: pd.DataFrame,
+    synthetic: pd.DataFrame,
+) -> dict[str, float]:
+    """Return separately interpretable morphology and texture discrepancies."""
+    exp_d = experimental["equivalent_diameter_um"].to_numpy(dtype=float)
+    syn_d = synthetic["equivalent_diameter_um"].to_numpy(dtype=float)
+    exp_a = experimental["aspect_ratio_recomputed"].to_numpy(dtype=float)
+    syn_a = synthetic["aspect_ratio_recomputed"].to_numpy(dtype=float)
+    exp_rho = float(stats.spearmanr(exp_d, exp_a).statistic)
+    syn_rho = float(stats.spearmanr(syn_d, syn_a).statistic)
+    odf_number, _ = _phase_texture_distance(experimental, synthetic)
+    odf_area, _ = _phase_texture_distance(
+        experimental, synthetic, weight_column="grain_area_um2"
+    )
+    return {
+        "ecd_wasserstein_normalized": _normalized_wasserstein(exp_d, syn_d),
+        "ar_wasserstein_normalized": _normalized_wasserstein(exp_a, syn_a),
+        "ecd_ks": _cdf_supremum(exp_d, syn_d),
+        "ar_ks": _cdf_supremum(exp_a, syn_a),
+        "mean_ecd_relative_error": _relative_error(np.mean(exp_d), np.mean(syn_d)),
+        "cv_ecd_relative_error": _relative_error(
+            np.std(exp_d, ddof=1) / np.mean(exp_d),
+            np.std(syn_d, ddof=1) / np.mean(syn_d),
+        ),
+        "mean_ar_relative_error": _relative_error(np.mean(exp_a), np.mean(syn_a)),
+        "ecd_q95_relative_error": _quantile_relative_error(exp_d, syn_d, 0.95),
+        "ecd_q99_relative_error": _quantile_relative_error(exp_d, syn_d, 0.99),
+        "ar_q95_relative_error": _quantile_relative_error(exp_a, syn_a, 0.95),
+        "experimental_size_ar_spearman": exp_rho,
+        "synthetic_size_ar_spearman": syn_rho,
+        "size_ar_spearman_absolute_error": abs(exp_rho - syn_rho),
+        "size_conditioned_ar_error": _conditional_aspect_error(
+            exp_d, exp_a, syn_d, syn_a
+        ),
+        "odf_number_total_variation": odf_number,
+        "odf_area_total_variation": odf_area,
+    }
+
+
+MORPHOLOGY_OBJECTIVE_WEIGHTS = {
+    "ecd_wasserstein_normalized": 1.0,
+    "ar_wasserstein_normalized": 1.0,
+    "ecd_ks": 0.35,
+    "ar_ks": 0.35,
+    "mean_ecd_relative_error": 1.0,
+    "cv_ecd_relative_error": 0.5,
+    "mean_ar_relative_error": 1.0,
+    "ecd_q95_relative_error": 0.25,
+    "ecd_q99_relative_error": 0.15,
+    "ar_q95_relative_error": 0.25,
+    "size_ar_spearman_absolute_error": 0.75,
+    "size_conditioned_ar_error": 1.0,
+}
+
+
+def morphology_objective(metrics: dict[str, float]) -> float:
+    """Aggregate only morphology terms; ODF is validated separately."""
+    return float(
+        sum(
+            MORPHOLOGY_OBJECTIVE_WEIGHTS[key] * metrics[key]
+            for key in MORPHOLOGY_OBJECTIVE_WEIGHTS
+        )
+        / sum(MORPHOLOGY_OBJECTIVE_WEIGHTS.values())
+    )
 
 
 def _axial_histogram(alpha_deg: np.ndarray, bins: int = 18) -> np.ndarray:

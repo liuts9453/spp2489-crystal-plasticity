@@ -108,6 +108,23 @@ per-grain experimental derivatives remain Git-ignored. The reviewed aggregate
 results and limitations are in the
 [public calibration report](results/experimental_microstructure_calibration_public/EXPERIMENTAL_NEPER_CALIBRATION_REPORT.md).
 
+The v2 workflow adds 500-replicate bootstrap/matched-size uncertainty,
+traceable four-parameter joint calibration, deterministic fixed-iteration
+Neper validation, parameter-identifiability diagnostics, and a paired
+large-grain-count FCC-CP pilot without changing the constitutive model:
+
+```bash
+python scripts/experimental_microstructure_calibration/bootstrap_ebsd_statistics.py --help
+python scripts/experimental_microstructure_calibration/optimize_neper_joint_statistics.py --help
+python scripts/experimental_microstructure_calibration/confirm_fixed_iteration_validation.py
+python scripts/experimental_microstructure_calibration/build_mechanical_pilot.py --help
+python scripts/experimental_microstructure_calibration/finalize_calibration_v2.py
+```
+
+Private per-grain tables and raw simulation directories remain ignored. Only
+reviewed aggregate statistics, figures, and the reproducibility report are
+exported to `results/experimental_microstructure_calibration_v2_public/`.
+
 ## Project structure
 
 - `include/materials/`, `src/materials/`: finite-strain constitutive models,
@@ -134,8 +151,10 @@ results and limitations are in the
 - `scripts/experimental_microstructure_calibration/`: private EBSD import and
   cleaning audit, ECD/AR/joint distribution fitting, phase-separated cubic
   texture descriptors, empirical `diameq` Neper generation, deterministic
-  statistical calibration, independent-seed validation, RVE-size checks, and
-  ten scientific figures. See its local `README.md` for data configuration.
+  statistical calibration, bootstrap uncertainty, four-parameter joint
+  refinement, independent-seed validation, RVE-size checks, optional paired
+  FCC-CP sensitivity pilots, and scientific figures. See its local `README.md`
+  for data configuration.
 - `results/cp_inverse_design_2d/`: reproducible raw runs, public target,
   compact optimization history, verification artifacts, copied Exodus files,
   and figures (large raw files remain ignored by Git).
@@ -154,6 +173,7 @@ results and limitations are in the
 - [Two-parameter CP inverse design on a Neper RVE](CP_INVERSE_DESIGN_2D_REPORT.md)
 - [Texture--morphology FCC-CP sensitivity and inverse-design gate](MORPHOLOGY_TEXTURE_INVERSE_DESIGN_REPORT.md)
 - [PI presentation visualization report](results/cp_inverse_design_2d/presentation/PRESENTATION_VISUALIZATION_REPORT.md)
+- [Experimental EBSD--Neper calibration v2 and FCC-CP sensitivity](results/experimental_microstructure_calibration_v2_public/EXPERIMENTAL_NEPER_CALIBRATION_V2_REPORT.md)
 
 The optimization report records the exact reduction and derivatives, validation
 data, benchmark commands, measured speedups, and remaining bottlenecks.

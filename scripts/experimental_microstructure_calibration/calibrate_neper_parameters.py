@@ -151,6 +151,8 @@ def calibrate(
             "evaluation": len(history) + 1,
             "diameter_log_spread_scale": key[0],
             "directional_ratio_x_over_y": key[1],
+            "aspect_ratio_proxy_scale": aspect_ratio_proxy_scale,
+            "input_size_shape_rank_correlation": input_size_shape_rank_correlation,
             "objective_mean": value,
             "objective_standard_deviation": (
                 ""
@@ -269,6 +271,11 @@ def calibrate(
             else "unsigned major/minor elongation magnitude; x/y assignment is a convention"
         ),
         "best_parameters": asdict(best),
+        "selected_history_evaluation": int(best_row["evaluation"]),
+        "parameter_selection_provenance": (
+            "minimum recorded calibration objective; every selected parameter is "
+            "stored in the corresponding history row"
+        ),
         "best_calibration_objective": float(best_row["objective_mean"]),
         "validation": validation_metrics,
         "validation_objective_mean": float(
